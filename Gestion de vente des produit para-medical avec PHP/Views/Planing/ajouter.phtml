@@ -1,0 +1,40 @@
+<?php
+
+?>
+<h1>Ajouter un nouveau Planing</h1>
+<form id="form1" method="post"><table><tr><td>Zone :</td><td><select id="Zone" name="Zone"><?php 
+foreach($this->viewData["listZone"] as $cat)
+ { if($cat["zone_id"] == $this->viewData["planing"]->getzone_id())
+     { echo '<option value="'.$cat["zone_id"]. '" selected>'.$cat['zone_name'].'</option>'; }
+        else{ echo '<option value="'.$cat["zone_id"]. '">'.$cat['zone_name'].'</option>'; }}  ?>
+		
+	</select></td></tr><tr><td> Delegué: </td><td><select id="Delegué " name="Delegué "><?php 	
+foreach($this->viewData["listusers"] as $cat)
+ {  if ($_COOKIE["ID_UTILISATEUR"] == $cat["parend_id"] && $cat["type"] == 2)
+	{  if($cat["ID_Utilisateur"] == $this->viewData["planing"]->getempl_id())
+     { echo '<option value="'.$cat["ID_Utilisateur"]. '" selected>'.$cat['Nom_Utilisateur'].'</option>'; }
+ else{ echo '<option value="'.$cat["ID_Utilisateur"]. '">'.$cat['Nom_Utilisateur'].'</option>'; }} } ?> </select></td></tr> 
+		
+		
+	<tr>
+		<td>Observation : </td>
+		<td><input type="text" id="observation" name="observation" 
+			value="<?php echo $this->viewData['planing']->getobservation();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("observation");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Etat : </td>
+		<td><input type="text" id="etat" name="etat" 
+			value="<?php echo $this->viewData['planing']->getetat();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("etat");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Planing">Retour</a>

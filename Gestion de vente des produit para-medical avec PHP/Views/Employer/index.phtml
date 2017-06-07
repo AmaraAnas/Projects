@@ -1,0 +1,36 @@
+<h1>Listes de Employer</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Tel<th>
+		<th>GSM<th>
+		<th>Adresse<th>
+		<th>City<th>
+		<th>Code postale<th>
+		<th>Date de recrutement<th>
+		<th>Parend<th>
+		<th>Labo<th>
+		<th>Utilisateur<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listEmployer"] as $employer):
+		echo '<tr>	<td>'.$employer["empl_id"].'<td>
+	<td>'.$employer["empl_phone"].'<td>
+	<td>'.$employer["empl_mobile"].'<td>
+	<td>'.$employer["empl_address1"].'<td>
+	<td>'.$employer["empl_city"].'<td>
+	<td>'.$employer["empl_zip"].'<td>
+	<td>'.$employer["empl_date_emb"].'<td>
+	<td>'.$employer["empl_id_parent"].'<td>
+	<td>'.$employer["lab_id"].'<td>
+	<td>'.$employer["ID_Utilisateur"].'<td>
+		<td><a href="?controler=Employer&action=modifier&id='.$employer['empl_id'].'">Modifier</a></td>
+		<td><a href="?controler=Employer&action=supprimer&id='.$employer['empl_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Employer&action=ajouter">Ajouter un nouveau produit</a>

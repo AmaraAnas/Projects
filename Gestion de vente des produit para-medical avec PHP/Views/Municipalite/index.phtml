@@ -1,0 +1,22 @@
+<h1>Listes de Municipalite</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Gouvernorat<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listMunicipalite"] as $municipalite):
+		echo '<tr>	<td>'.$municipalite["mun_id"].'<td>
+	<td>'.$municipalite["mun_name"].'<td>
+	<td>'.$municipalite["gov_id"].'<td>
+		<td><a href="?controler=Municipalite&action=modifier&id='.$municipalite['mun_id'].'">Modifier</a></td>
+		<td><a href="?controler=Municipalite&action=supprimer&id='.$municipalite['mun_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Municipalite&action=ajouter">Ajouter un nouveau produit</a>

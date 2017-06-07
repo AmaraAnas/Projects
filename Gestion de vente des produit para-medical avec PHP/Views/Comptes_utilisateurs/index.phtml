@@ -1,0 +1,53 @@
+<?php 
+
+?>
+
+
+<h1>Listes de Comptes_utilisateurs</h1>
+<table>
+	<tr>
+	
+		<th>Nom<th>
+		<th>Prénom<th>
+		<th>User name<th>
+		<th>Email<th>
+		<th>Date_Inscription<th>
+		<th>Activer<th>
+		<th>phone<th>
+		<th>mobile<th>
+		<th>address<th>
+		<th>city<th>
+		<th>zip<th>
+		<th>date_emb<th>
+		<th>parend_id<th>
+		<th>type<th>
+		<th>Modification</th>
+		<th>Suppression</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listComptes_utilisateurs"] as $comptes_utilisateurs):
+		echo '<tr>	
+	<td>'.$comptes_utilisateurs["Nom_Propre"].'<td>
+	<td>'.$comptes_utilisateurs["Prenom"].'<td>
+	<td>'.$comptes_utilisateurs["Nom_Utilisateur"].'<td>
+	<td>'.$comptes_utilisateurs["Adresse_Email"].'<td>
+	<td>'.$comptes_utilisateurs["Date_Inscription"].'<td>
+	<td>'.$comptes_utilisateurs["Compte_Active"].'<td>
+	<td>'.$comptes_utilisateurs["phone"].'<td>
+	<td>'.$comptes_utilisateurs["mobile"].'<td>
+	<td>'.$comptes_utilisateurs["address"].'<td>
+	<td>'.$comptes_utilisateurs["city"].'<td>
+	<td>'.$comptes_utilisateurs["zip"].'<td>
+	<td>'.$comptes_utilisateurs["date_emb"].'<td>
+	<td>'.$comptes_utilisateurs["parend_id"].'<td>
+	<td>'.$comptes_utilisateurs["type"].'<td>
+	
+	
+		<td><a href="?controler=Comptes_utilisateurs&action=modifier&id='.$comptes_utilisateurs['ID_Utilisateur'].'">Modifier</a></td>
+		<td><a href="?controler=Comptes_utilisateurs&action=supprimer&id='.$comptes_utilisateurs['ID_Utilisateur'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Comptes_utilisateurs&action=ajouter">Ajouter un nouveau utilisateur</a>

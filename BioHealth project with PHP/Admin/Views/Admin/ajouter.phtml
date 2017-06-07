@@ -1,0 +1,29 @@
+<h1>Ajouter un nouveau Admin</h1>
+<form id="form1" method="post">
+
+	<table>
+		<tr>
+			<td>Login : </td>
+			<td><input type="text" id="login" name="login"/>
+			<span id="erreur">
+			<?php
+			echo $this->viewData['admin']->ValidationMessage("login");
+			?></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Password : </td>
+			<td><input type="password" id="password" name="password"/>
+			<span id="erreur">
+			<?php
+			echo $this->viewData['admin']->ValidationMessage("password");
+			?></span>
+			</td>
+		</tr>
+
+
+	</table>
+			<input type="submit" value="Ajouter" />
+		</form>
+	<a href="?controler=Admin&page=1">Retour</a>
+<?php echo $this->viewData['erreur']; ?>

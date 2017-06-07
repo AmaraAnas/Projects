@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+<definition name="layout1" template="/WEB-INF/templates/layout1.jsp">
+<put-attribute name="title" value=""></put-attribute>
+<put-attribute name="header" value="/WEB-INF/templates/layout1/header.jsp"></put-attribute>
+<put-attribute name="menu" value="/WEB-INF/templates/layout1/menu.jsp"></put-attribute>
+<put-attribute name="body" value=""></put-attribute>
+<put-attribute name="footer" value="/WEB-INF/templates/layout1/footer.jsp"></put-attribute>
+</definition>
+<definition name="layout2" template="/WEB-INF/templates/layout2.jsp">
+<put-attribute name="title" value=""></put-attribute>
+<put-attribute name="header" value="/WEB-INF/templates/layout2/header.jsp"></put-attribute>
+<put-attribute name="menu" value="/WEB-INF/templates/layout2/menu.jsp"></put-attribute>
+<put-attribute name="body" value=""></put-attribute>
+<put-attribute name="footer" value="/WEB-INF/templates/layout2/footer.jsp"></put-attribute>
+</definition>
+<definition name="jouets" extends="layout1">
+<put-attribute name="title" value="jouets" />
+<put-attribute name="body" value="/WEB-INF/views/jouets.jsp" />
+</definition>
+<definition name="categories" extends="layout1">
+<put-attribute name="title" value="categories" />
+<put-attribute name="body" value="/WEB-INF/views/categories.jsp" />
+</definition>
+<definition name="clients" extends="layout1">
+<put-attribute name="title" value="clients" />
+<put-attribute name="body" value="/WEB-INF/views/clients.jsp" />
+</definition>
+<definition name="index" extends="layout2">
+<put-attribute name="title" value="EBoutique" />
+<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+</definition>
+</tiles-definitions>

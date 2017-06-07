@@ -1,0 +1,32 @@
+<h1>Modifier un Categorie</h1>
+<form id="form1" method="post"><table>	<tr>
+		<td>ID : </td>
+		<td><input readonly type="text" id="cat_id" name="cat_id" 
+			value="<?php echo $this->viewData['categorie']->getcat_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['categorie']->ValidationMessage("cat_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Libele : </td>
+		<td><input   type="text" id="cat_name" name="cat_name" 
+			value="<?php echo $this->viewData['categorie']->getcat_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['categorie']->ValidationMessage("cat_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Etat : </td>
+		<td><input   type="text" id="etat" name="etat" 
+			value="<?php echo $this->viewData['categorie']->getetat();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['categorie']->ValidationMessage("etat");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Modifier" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Categorie">Retour</a>

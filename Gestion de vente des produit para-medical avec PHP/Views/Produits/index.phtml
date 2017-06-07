@@ -1,0 +1,24 @@
+<h1>Listes de Produits</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Ref<th>
+		<th>Observation<th>
+		<th>Modification</th>
+		<th>Suppression</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listProduits"] as $produits):
+		echo '<tr>	<td>'.$produits["pro_id"].'<td>
+	<td>'.$produits["pro_name"].'<td>
+	<td>'.$produits["pro_ref"].'<td>
+	<td>'.$produits["pro_obs"].'<td>
+		<td><a href="?controler=Produits&action=modifier&id='.$produits['pro_id'].'">Modifier</a></td>
+		<td><a href="?controler=Produits&action=supprimer&id='.$produits['pro_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Produits&action=ajouter">Ajouter un nouveau produit</a>

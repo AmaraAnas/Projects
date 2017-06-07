@@ -1,0 +1,40 @@
+<h1>Listes de Lab</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Nom<th>
+		<th>Prénom<th>
+		<th>Email<th>
+		<th>Tel<th>
+		<th>Fax<th>
+		<th>GSM<th>
+		<th>Adresse<th>
+		<th>Code postale<th>
+		<th>Municipalie<th>
+		<th>Logo<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listLab"] as $lab):
+		echo '<tr>	<td>'.$lab["lab_id"].'<td>
+	<td>'.$lab["lab_name"].'<td>
+	<td>'.$lab["lab_first_name"].'<td>
+	<td>'.$lab["lab_last_name"].'<td>
+	<td>'.$lab["lab_email"].'<td>
+	<td>'.$lab["lab_phone"].'<td>
+	<td>'.$lab["lab_fax"].'<td>
+	<td>'.$lab["lab_mobile"].'<td>
+	<td>'.$lab["lab_address1"].'<td>
+	<td>'.$lab["lab_zip"].'<td>
+	<td>'.$lab["mun_id"].'<td>
+	<td>'.$lab["logo"].'<td>
+		<td><a href="?controler=Lab&action=modifier&id='.$lab['lab_id'].'">Modifier</a></td>
+		<td><a href="?controler=Lab&action=supprimer&id='.$lab['lab_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Lab&action=ajouter">Ajouter un nouveau produit</a>

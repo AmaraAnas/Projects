@@ -1,0 +1,86 @@
+@CHARSET "ISO-8859-1";
+body{
+font-family: sans-serif;
+font-size: 12px;
+background: #ff0080;
+}
+.cadre{
+margin: 0;
+border: 1px dotted gray;
+margin-top: 10px;
+padding: 10px;
+background: #ffffff;
+}
+#body{
+min-height: 400px;
+overflow: auto;
+}
+#menu{
+width: 200px;
+min-height: 400px;
+background: #00ffff;
+float: left;
+margin-left:0;
+margin-top:10px;
+overflow: auto;
+}
+
+#footer{
+background: #ff0080;
+}
+.table1{
+}
+.table1 th{
+padding: 5px;
+background: pink;
+border: 1px dotted gray;
+}
+.table1 td{
+border:1px dotted gray;
+padding: 5px;
+background: white;
+}
+.errors{
+color: red;
+}
+.ficheJouet{
+border:1px dotted gray;
+float:left;
+height: 300px;
+padding: 10px;
+margin: 10px;
+background: #80ffff;
+}
+#panier{
+border:1px dotted gray;
+padding: 10px;
+margin: 10px;
+overflow: auto;
+}
+#panier table th{
+border:1px dotted gray;
+background: pink;
+padding: 5px;
+}
+#panier table td{
+border:1px dotted gray;
+background: white;
+padding: 5px;
+}
+#header table{
+width: 100%;
+}
+#content{
+margin: 0px;
+}
+#header td.pan{
+text-align: right;
+width: 200px;
+}
+#header td.pan div{
+border: 1px dotted gray;
+border-radius:5px;
+}
+#imgPanier{
+cursor: pointer;
+}

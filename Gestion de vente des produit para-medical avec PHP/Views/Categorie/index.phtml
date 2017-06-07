@@ -1,0 +1,22 @@
+<h1>Listes de Categorie</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Etat<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listCategorie"] as $categorie):
+		echo '<tr>	<td>'.$categorie["cat_id"].'<td>
+	<td>'.$categorie["cat_name"].'<td>
+	<td>'.$categorie["etat"].'<td>
+		<td><a href="?controler=Categorie&action=modifier&id='.$categorie['cat_id'].'">Modifier</a></td>
+		<td><a href="?controler=Categorie&action=supprimer&id='.$categorie['cat_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Categorie&action=ajouter">Ajouter un nouveau produit</a>

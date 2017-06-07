@@ -1,0 +1,51 @@
+<h1>Supprimer un Planing</h1>
+<form id="form1" method="post"><table>	<tr>
+		<td>ID : </td>
+		<td><input readonly type="text" id="planing_id" name="planing_id" 
+			value="<?php echo $this->viewData['planing']->getplaning_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("planing_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Zone : </td>
+		<td><input readonly type="text" id="zone_id" name="zone_id" 
+			value="<?php echo $this->viewData['planing']->getzone_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("zone_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Delegué : </td>
+		<td><input readonly type="text" id="empl_id" name="empl_id" 
+			value="<?php echo $this->viewData['planing']->getempl_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("empl_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Observation : </td>
+		<td><input readonly type="text" id="observation" name="observation" 
+			value="<?php echo $this->viewData['planing']->getobservation();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("observation");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Etat : </td>
+		<td><input readonly type="text" id="etat" name="etat" 
+			value="<?php echo $this->viewData['planing']->getetat();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['planing']->ValidationMessage("etat");
+			?></span>
+		</td>
+	</tr>
+
+				<tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Planing">Retour</a>

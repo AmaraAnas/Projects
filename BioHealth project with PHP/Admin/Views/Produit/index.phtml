@@ -1,0 +1,103 @@
+﻿<?php
+//for total count data :
+
+$limit = 3;
+$total_records =  sizeof($this->viewData['listProduit']);
+$total_pages = ceil($total_records / $limit);
+
+
+///for first time load data
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $limit;
+//echo "----------".$_GET["page"];
+?>
+<h1>Liste des Produits</h1>
+<table>
+	<tr>
+		<th>N°</th><th>Designation</th>
+		<th>Description</th><th>Quantité</th><th>Categorie</th>
+		<th>Nouveauté</th><th>Top</th><th>Vedette</th>
+		<th>Modification</th><th>Suppression</th><th>Details</th>
+	</tr>
+	<?php
+		//On récupére la liste a partir de viewData
+		foreach(array_slice($this->viewData['listProduit'],$start_from,$limit) as $produit) :
+			$list1 = explode("#bis#", $produit['nom']);
+			$list2 = explode("#bis#", $produit['description']);
+
+			echo'<tr><td>'.$produit['produit_id'].'</td>
+			     <td>'.$list1[1].'</td>
+			     <td>'.$list2[1].'</td>
+				 <td>'.$produit['quantite_stock'].'</td>';
+
+			if($produit['categorie_id'] ==0)
+				echo '<td>--</td>';
+			else {
+				foreach ($this->viewData['listCategorie'] as $cate) :
+					if ($produit['categorie_id'] == $cate['categorie_id'])
+					{
+						$list = explode("#bis#",$cate['libelle']);
+						echo ' <td>' . $list[1] . '</td>';
+					}
+
+				endforeach;
+
+			}
+
+
+			if($produit['en_new'] ==0)
+				echo '<td>Non</td>';
+			else if ($produit['en_new'] ==1)
+				echo '<td>Oui</td>';
+			else echo '<td>--</td>';
+
+
+			if($produit['en_top'] ==0)
+				echo '<td>Non</td>';
+			else if ($produit['en_top'] ==1)
+				echo '<td>Oui</td>';
+			else echo '<td>--</td>';
+
+			if($produit['en_vedette'] ==0)
+				echo '<td>Non</td>';
+			else if ($produit['en_vedette'] ==1)
+				echo '<td>Oui</td>';
+			else echo '<td>--</td>';
+
+
+
+
+
+
+			echo '<td><a href="?controler=Produit&action=modifier&id=
+					'.$produit['produit_id'].'">Modifier</a></td>
+				 <td><a href="?controler=Produit&action=supprimer&id=
+					'.$produit['produit_id'].'">Supprimer</a></td>
+					 <td><a href="?controler=Prod_details&action=index&id=
+					'.$produit['produit_id'].'">Details</a></td>
+
+				 </tr>';
+		endforeach;
+	?>
+</table>
+<a href="?controler=Produit&action=ajouter">Ajouter un nouveau produit</a>
+
+<div class="center">
+	<ul class="pagination">
+		<?php if ($page-1>0) : ?>
+			<li><a href='?controler=Produit&page=<?php echo $page-1 ;?>'>«</a></li>
+		<?php endif;?>
+		<?php if(!empty($total_pages)):for($i=1; $i<=$total_pages; $i++):
+			if($i == $page):?>
+				<li><a class="active" href='?controler=Produit&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php else:?>
+				<li><a  href='?controler=Produit&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php endif;?>
+
+
+		<?php endfor;endif;?>
+		<?php if ($page+1<=$total_pages) : ?>
+			<li><a href='?controler=Produit&page=<?php echo $page+1 ;?>'>»</a></li>
+		<?php endif;?>
+	</ul>
+</div>

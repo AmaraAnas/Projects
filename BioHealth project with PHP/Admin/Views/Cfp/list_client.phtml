@@ -1,0 +1,96 @@
+<?php
+//for total count data :
+
+$limit = 2;
+$total_records =  sizeof($this->viewData['listClient']);
+$total_pages = ceil($total_records / $limit);
+
+
+///for first time load data
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $limit;
+//echo "----------".$_GET["page"];
+?>
+	<h1>Liste des Commandes & Factures par Client</h1>
+<?php
+foreach (array_slice($this->viewData['listClient'],$start_from,$limit)as $cl) : ?>
+	<FIELDSET><LEGEND align=top><?php echo $cl['first_name']." ". $cl['last_name']  ?></LEGEND>
+		<h5>Les Commandes en cours :</h5>
+<table>
+	<tr>
+		<th>N° Commande</th><th>Date Commande</th><th>Total</th><th>Ajouter Facture</th><th>Details</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData['listCommande'] as $com) :
+		if ($com['client_id'] == $cl['client_id'])
+		{
+			echo'<tr><td>'.$com['num_com'].'</td>
+	     <td>'.$com['date_commande'].'</td>
+			<td>'.$com['total'].'</td>';
+			echo  '<td><a href="?controler=Cfp&action=modifier&id=
+					'.$com['cfp_id'].'">Ajouter</a></td>';
+			echo  '<td><a href="?controler=Cfp&action=details&id=
+					'.$com['cfp_id'].'">Details</a></td>';
+		}
+
+
+	endforeach; ?>
+
+
+</table>
+		<h5>Les Commandes facturées :</h5>
+	<table>
+		<tr>
+			<th>N° Commande</th><th>Date Commande</th><th>N° Facture</th><th>Date Facture</th><th>Total</th><th>Details</th>
+		</tr>
+		<?php
+		//On récupére la liste a partir de viewData
+		foreach($this->viewData['listFacture'] as $fac) :
+			if ($fac['client_id'] == $cl['client_id'])
+			{
+
+		 echo'<tr><td>'.$fac['num_com'].'</td>
+	     <td>'.$fac['date_commande'].'</td>
+		 <td>'.$fac['num_fact'].'</td>
+		 <td>'.$fac['date_fact'].'</td>
+		 <td>'.$fac['total'].'</td>';
+				echo  '<td><a href="?controler=Cfp&action=details&id=
+					'.$fac['cfp_id'].'">Details</a></td>';
+			}
+			/*	foreach ($this->viewData['listClient'] as $cl) :
+                    if ($com['client_id'] == $cl['client_id'])
+                    {
+                        echo ' <td>' . $cl['first_name']." ".$cl['last_name'] . '</td>';}
+                endforeach; */
+
+
+
+		endforeach;
+		?>
+
+
+	</table>
+	</FIELDSET>
+	<?php
+endforeach; ?>
+<div class="center">
+	<ul class="pagination">
+		<?php if ($_GET["page"]-1>0) : ?>
+			<li><a href='?controler=Cfp&action=list_client&page=<?php echo $_GET["page"]-1 ;?>'>«</a></li>
+		<?php endif;?>
+		<?php if(!empty($total_pages)):for($i=1; $i<=$total_pages; $i++):
+			if($i == $_GET["page"]):?>
+				<li><a class="active" href='?controler=Cfp&action=list_client&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php else:?>
+				<li><a  href='?controler=Cfp&action=list_client&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php endif;?>
+
+
+		<?php endfor;endif;?>
+		<?php if ($_GET["page"]+1<=$total_pages) : ?>
+			<li><a href='?controler=Cfp&action=list_client&page=<?php echo $_GET["page"]+1 ;?>'>»</a></li>
+		<?php endif;?>
+	</ul>
+</div>
+

@@ -1,0 +1,20 @@
+<h1>Listes de Country</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listCountry"] as $country):
+		echo '<tr>	<td>'.$country["count_id"].'<td>
+	<td>'.$country["count_name"].'<td>
+		<td><a href="?controler=Country&action=modifier&id='.$country['count_id'].'">Modifier</a></td>
+		<td><a href="?controler=Country&action=supprimer&id='.$country['count_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Country&action=ajouter">Ajouter un nouveau produit</a>

@@ -1,0 +1,46 @@
+<h1>Modifier un Produit Details </h1>
+<form id="form1" method="post">
+
+	<table>
+		<tr>
+			<td><input readonly type="hidden" id="id_details" name="id_details"
+					   value="<?php echo $this->viewData['prod_details']->getIdDetails();?>"/>
+			<span id="erreur"><?php
+				echo $this->viewData['prod_details']->ValidationMessage("id_details");
+				?></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Poids : </td>
+			<td><input type="text" id="poids" name="poids" value="<?php echo $this->viewData['prod_details']->getPoids();?>"/>(g)
+
+			<span id="erreur">
+			<?php
+			echo $this->viewData['prod_details']->ValidationMessage("poids");
+			?></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Prix : </td>
+			<td><input type="text" id="prix" name="prix" value="<?php echo $this->viewData['prod_details']->getPrix();?>"/>(DT)
+			<span id="erreur">
+			<?php
+			echo $this->viewData['prod_details']->ValidationMessage("prix");
+			?></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Quantité : </td>
+			<td><input type="text" id="quantite" name="quantite" value="<?php echo $this->viewData['prod_details']->getQuantite();?>"/>
+			<span id="erreur">
+			<?php
+			echo $this->viewData['prod_details']->ValidationMessage("quantite");
+			?></span>
+			</td>
+		</tr>
+		<!--			<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>  -->
+	</table>
+	<input type="submit" value="Modifier"  />
+
+</form>
+<a href="?controler=Produit">Retour</a>

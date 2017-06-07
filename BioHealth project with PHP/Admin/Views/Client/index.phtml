@@ -1,0 +1,67 @@
+﻿<?php
+//for total count data :
+
+$limit = 3;
+$total_records =  sizeof($this->viewData['listClient']);
+$total_pages = ceil($total_records / $limit);
+
+
+///for first time load data
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $limit;
+//echo "----------".$_GET["page"];
+?>
+
+<h1>Liste des Clients</h1>
+<table>
+	<tr>
+		<th>N°</th><th>Email</th>
+		<th>Pseudo</th><th>Nom & Prenom</th><th>Telephone</th><th>Pays</th>
+		<th>Ville</th><th>Adresse</th><th>Suppression</th>
+	</tr>
+	<?php
+		//On récupére la liste a partir de viewData
+		foreach(array_slice($this->viewData['listClient'],$start_from,$limit) as $client) :
+			echo'<tr><td>'.$client['client_id'].'</td>
+			     <td>'.$client['email'].'</td>
+			     <td>'.$client['pseudo'].'</td>
+				 <td>'.$client['first_name'].' '.$client['last_name'].'</td>
+				 <td>'.$client['phone'].'</td>';
+			foreach ($this->viewData['listPays'] as $pays) :
+					if ($client['pays_id'] == $pays['pays_id'])
+						echo ' <td>' . $pays['pays'] . '</td>';
+			endforeach;
+			foreach ($this->viewData['listVille'] as $ville) :
+				if ($client['ville_id'] == $ville['ville_id'])
+					echo ' <td>' . $ville['libelle'] . '</td>';
+			endforeach;
+
+
+				 echo '<td>'.$client['street'].' '.$client['zip'].'</td>
+
+				<td><a href="?controler=Client&action=supprimer&id=
+					'.$client['client_id'].'">Supprimer</a></td>';
+		endforeach;
+	?>
+</table>
+
+<div class="center">
+	<ul class="pagination">
+		<?php if ($_GET["page"]-1>0) : ?>
+			<li><a href='?controler=Client&page=<?php echo $_GET["page"]-1 ;?>'>«</a></li>
+		<?php endif;?>
+		<?php if(!empty($total_pages)):for($i=1; $i<=$total_pages; $i++):
+			if($i == $_GET["page"]):?>
+				<li><a class="active" href='?controler=Client&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php else:?>
+				<li><a  href='?controler=Client&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php endif;?>
+
+
+		<?php endfor;endif;?>
+		<?php if ($_GET["page"]+1<=$total_pages) : ?>
+			<li><a href='?controler=Client&page=<?php echo $_GET["page"]+1 ;?>'>»</a></li>
+		<?php endif;?>
+	</ul>
+</div>
+

@@ -1,0 +1,161 @@
+<?php 
+if ($_COOKIE["type"] == 2) 
+	$this->RederictAction("pagevide2");
+?>
+
+
+<h1>Ajouter un nouveau Utilisateur</h1><form id="form1" method="post">		<table>	<tr>
+		<td>Nom : </td>
+		<td><input type="text" id="Nom_Propre" name="Nom_Propre" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getNom_Propre();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Nom_Propre");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Prénom : </td>
+		<td><input type="text" id="Prenom" name="Prenom" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getPrenom();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Prenom");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>User name : </td>
+		<td><input type="text" id="Nom_Utilisateur" name="Nom_Utilisateur" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getNom_Utilisateur();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Nom_Utilisateur");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Password : </td>
+		<td><input type="password" id="Mot_De_Passe" name="Mot_De_Passe" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getMot_De_Passe();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Mot_De_Passe");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Email : </td>
+		<td><input type="text" id="Adresse_Email" name="Adresse_Email" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getAdresse_Email();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Adresse_Email");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Date de recrutement : </td>
+		<td><input type="text" id="Date_Inscription" name="Date_Inscription" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getDate_Inscription();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Date_Inscription");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Activer : </td>
+		<td><select id="Compte_Active" name="Compte_Active">
+				<option value="1" selected>Activer</option>
+				<option value="0" selected>Désactiver</option>			
+			<select>
+		</td>
+	<!--	
+	<option value="0" selected>Administrateur</option>
+				<option value="0" selected>Superviseur</option>
+				<option value="0" selected>Delegue</option>	
+				
+	<input type="text" id="Compte_Active" name="Compte_Active" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getCompte_Active();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("Compte_Active");
+			?></span> -->
+		
+	</tr>
+	<tr>
+		<td> Tel : </td>
+		<td><input type="text" id="phone" name="phone" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getphone();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("phone");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td> Mobile: </td>
+		<td><input type="text" id="mobile" name="mobile" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getmobile();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("mobile");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td> Adresse: </td>
+		<td><input type="text" id="address" name="address" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getaddress();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("address");
+			?></span>
+		</td>
+	</tr>
+	<td>  Gouvernorat :</td><td><select id="Gouvernorat" name="Gouvernorat"><?php 
+foreach($this->viewData["listGouvernorat"] as $cat)
+ { if($cat["gov_id"] == $this->viewData["comptes_utilisateurs"]->getcity())
+     { echo '<option value="'.$cat["gov_id"]. '" selected>'.$cat['gov_name'].'</option>'; }
+        else{ echo '<option value="'.$cat["gov_id"]. '">'.$cat['gov_name'].'</option>'; }}  ?>
+	</tr>
+	<tr>
+		<td> ZIP: </td>
+		<td><input type="text" id="ZIP" name="ZIP" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getzip();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("zip");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td> Date d'embauche:</td>
+		<td><input type="text" id="date_emb" name="date_emb" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->getdate_emb();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("date_emb");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Type : </td>
+		<td><select id="type" name="type">
+		        <option value="2" selected>Délégue</option>	
+				<option value="1" selected>Superviseur</option>
+		        <option value="0" selected>SuperAdmin</option>	
+				
+					
+			<select>
+		</td>
+			<!--	
+	<input type="text" id="type" name="type" 
+			value="<?php echo $this->viewData['comptes_utilisateurs']->gettype();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['comptes_utilisateurs']->ValidationMessage("type");
+			?></span> -->
+	</tr>
+
+		</select></td></tr><tr><td> Parent: </td><td><select id="Parent " name="Parent"><?php 
+foreach($this->viewData["listComptes_utilisateurs"] as $cat)
+ {  if ($_COOKIE["parend_id"] == 0)
+	{  if($cat["parend_id"] == $this->viewData["comptes_utilisateurs"]->getID_Utilisateur())
+     { echo '<option value="'.$cat["ID_Utilisateur"]. '" selected>'.$cat['Nom_Utilisateur'].'</option>'; }
+ else{ echo '<option value="'.$cat["ID_Utilisateur"]. '">'.$cat['Nom_Utilisateur'].'</option>'; }
+ }
+ else echo  '<option value="'.$_COOKIE["ID_UTILISATEUR"]. '">'.$_COOKIE['NOM_UTILISATEUR'].'</option>'; ;} ?>
+
+			<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Comptes_utilisateurs">Retour</a>

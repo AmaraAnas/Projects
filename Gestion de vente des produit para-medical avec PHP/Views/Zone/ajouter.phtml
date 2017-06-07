@@ -1,0 +1,38 @@
+<h1>Ajouter un nouveau Zone</h1>
+<?php 
+//echo '<pre>'; print_r($this->viewData['zones']);
+?>
+<form id="form1" method="post">		<table>	<tr>
+		<td>Libele : </td>
+		<td><input type="text" id="zone_name" name="zone_name" 
+			value="<?php echo $this->viewData['zone']->getzone_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['zone']->ValidationMessage("zone_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Parent zone : </td>
+		<td>
+			<select id="zone_pid" name="zone_pid"><option value="0"></option>
+			<?php 
+			foreach($this->viewData["zones"] as $zon){ 
+				echo '<option value="'.$zon["zone_id"]. '" >'.$zon['zone_name'].'</option>'; 
+			}?>
+			</select>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>Gouvernorat : </td>
+		<td><input type="text" id="gov_id" name="gov_id" 
+			value="<?php echo $this->viewData['zone']->getgov_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['zone']->ValidationMessage("gov_id");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Zone">Retour</a>

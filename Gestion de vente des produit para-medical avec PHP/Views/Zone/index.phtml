@@ -1,0 +1,24 @@
+<h1>Listes de Zone</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Parent zone<th>
+		<th>Gouvernorat<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listZone"] as $zone):
+		echo '<tr><td>'.$zone["zone_id"].'<td>
+			<td>'.$zone["zone_name"].'<td>
+			<td>'.$zone["zone_pid"].'<td>
+			<td>'.$zone["gov_id"].'<td>
+			<td><a href="?controler=Zone&action=modifier&id='.$zone['zone_id'].'">Modifier</a></td>
+			<td><a href="?controler=Zone&action=supprimer&id='.$zone['zone_id'].'">Supprimer</a></td>
+			</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Zone&action=ajouter">Ajouter un nouveau produit</a>

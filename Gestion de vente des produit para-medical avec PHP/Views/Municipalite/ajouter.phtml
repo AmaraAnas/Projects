@@ -1,0 +1,26 @@
+<h1>Ajouter un nouveau Municipalite</h1><form id="form1" method="post">		<table>	
+
+	<tr>
+		<td>Libele : </td>
+		<td><input type="text" id="mun_name" name="mun_name" 
+			value="<?php echo $this->viewData['municipalite']->getmun_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['municipalite']->ValidationMessage("mun_name");
+			?></span>
+		</td>
+	</tr>
+			<tr>
+				<td>Gouvernorat : </td>
+				<td>
+					<select id="gov_id" name="gov_id">
+					<?php 
+ 					foreach($this->viewData["listGouvernorat"] as $cat){ 
+							if($cat["gov_id"] == $this->viewData['municipalite']->getgov_id()){
+ 							echo '<option value="'.$cat["gov_id"]. '" selected>'.$cat['gov_name'].'</option>'; 
+							}else{
+ 							echo '<option value="'.$cat["gov_id"]. '">'.$cat['gov_name'].'</option>'; }}
+					?> </select></td></tr> 
+				<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Municipalite">Retour</a>

@@ -1,0 +1,10 @@
+<h1>Supprimer un Lpro_emp_zone</h1>
+<form id="form1" method="post"><table>
+<tr><td>li_id: </td>
+<td><input type="text" id="li_id" name="li_id" readonly="true" 
+value="<?php echo $this->viewData["Lpro_emp_zone"]->getli_id();?>"/></td></tr><tr><td>zone_id</td><td><select id="zone_id" name="zone_id"><?php 
+ foreach($this->viewData["listZone"] as $cat){ if($cat["zone_id"] == $this->viewData["Lpro_emp_zone"]->getzone_id()){ echo '<option value="'.$cat["zone_id"]. '" selected>'.$cat['zone_name'].'</option>'; }else{ echo '<option value="'.$cat["zone_id"]. '">'.$cat['zone_name'].'</option>'; }}?> </select></td></tr> <tr><td>empl_id</td><td><select id="empl_id" name="empl_id"><?php 
+ foreach($this->viewData["listEmployer"] as $cat){ if($cat["empl_id"] == $this->viewData["Lpro_emp_zone"]->getempl_id()){ echo '<option value="'.$cat["empl_id"]. '" selected>'.$cat['empl_first_name'].'</option>'; }else{ echo '<option value="'.$cat["empl_id"]. '">'.$cat['empl_first_name'].'</option>'; }}?> </select></td></tr> <tr><td>pro_id</td><td><select id="pro_id" name="pro_id"><?php 
+ foreach($this->viewData["listProduits"] as $cat){ if($cat["pro_id"] == $this->viewData["Lpro_emp_zone"]->getpro_id()){ echo '<option value="'.$cat["pro_id"]. '" selected>'.$cat['pro_name'].'</option>'; }else{ echo '<option value="'.$cat["pro_id"]. '">'.$cat['pro_name'].'</option>'; }}?> </select></td></tr> 
+ <tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+ </table></form>

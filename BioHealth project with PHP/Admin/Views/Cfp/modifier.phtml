@@ -1,0 +1,23 @@
+<h1>Ajouter Facture</h1>
+<form id="form1" method="post"><table>
+		<tr>
+		<td><input readonly type="hidden" id="cfp_id" name="cfp_id"
+			value="<?php echo $this->viewData['commande']->getCfpId();?>"/>
+		</td>
+		</tr>
+		<tr>
+			<td> N° Facture : </td>
+			<td><input  type="text" id="num_fact" name="num_fact"/>
+			</td>
+		</tr>
+		<tr>
+			<td> Date Facture : </td>
+			<td><input readonly type="date" id="date_fact" name="date_fact" value="<?php echo date("Y-m-d");; ?>"/>
+			</td>
+		</tr>
+
+				<tr><td colspan="2"><input type="submit" value="Valider" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Cfp&page=1">Retour</a>
+<?php echo  $this->viewData['erreur'] ?>

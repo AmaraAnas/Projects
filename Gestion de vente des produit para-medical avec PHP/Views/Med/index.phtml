@@ -1,0 +1,32 @@
+<h1>Listes de Med</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Nom<th>
+		<th>Prénom<th>
+		<th>Email<th>
+		<th>GSM 1<th>
+		<th>GSM 2<th>
+		<th>Fonction<th>
+		<th>Spécialité<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listMed"] as $med):
+		echo '<tr>	<td>'.$med["med_id"].'<td>
+	<td>'.$med["med_first_name"].'<td>
+	<td>'.$med["med_last_name"].'<td>
+	<td>'.$med["med_email"].'<td>
+	<td>'.$med["med_mobile1"].'<td>
+	<td>'.$med["med_mobile2"].'<td>
+	<td>'.$med["fonc_id"].'<td>
+	<td>'.$med["spe_id"].'<td>
+		<td><a href="?controler=Med&action=modifier&id='.$med['med_id'].'">Modifier</a></td>
+		<td><a href="?controler=Med&action=supprimer&id='.$med['med_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Med&action=ajouter">Ajouter un nouveau produit</a>

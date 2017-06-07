@@ -1,0 +1,114 @@
+<h1>Ajouter un nouveau Lmed</h1>
+<?php
+function php2js($var,$prefix,$returnArray = false)
+{
+  $ret = array();
+  if(is_array($var) or is_object($var))
+  {
+    $ret[] = $prefix . ' = new Array();';
+    foreach($var as $key => $value)
+    {
+      array_splice($ret, count($ret), 0, php2js($value,$prefix.'['.var_export($key,true).']',true));
+    }
+  }
+  elseif(is_numeric($var))
+  {
+    $ret[] = $prefix . ' = ' . $var . ';';
+  }
+  elseif($var === null or is_resource($var))
+  {
+    $ret[] = $prefix . ' = null;';
+  }
+  else
+  {
+    $ret[] = $prefix . ' = ' . var_export($var,true) . ';';
+  }
+  return ($returnArray ? $ret : implode("\n",$ret)."\n");
+}
+
+//echo php2js($this->viewData["listZone"],'arr');
+echo "<script type='text/javascript'>".php2js($this->viewData["listZone"],'arr').";</script>";
+?>
+<script>
+$(document).ready(function(){
+	$('#zone_id').change(function(){
+		var select_id = document.getElementById("zone_id");
+		var html='<select id="zone_parent" name="zone_parent">';
+		for($i=0;$i<arr.length;$i++){
+			if(arr[$i]['zone_pid']==select_id.options[select_id.selectedIndex].value){
+				//alert(arr[$i]['zone_name']);
+				html += '<option value="'+arr[$i]['zone_id']+'">'+arr[$i]['zone_name']+'</option>';
+			}
+		}
+		$('#zone_par').empty();
+        $('#zone_par').append(html);
+	})
+})
+</script>
+<form id="form1" method="post"><table><tr><td>zone parend</td><td>
+<select id="zone_id" name="zone_id"><?php 
+ foreach($this->viewData["listZone"] as $cat){
+	if($cat["zone_pid"]==0){ 
+		if($cat["zone_id"] == $this->viewData["Lmed"]->getzone_id()){ 
+			echo '<option value="'.$cat["zone_id"]. '" selected>'.$cat['zone_name'].'</option>'; 
+		}else{ 
+			echo '<option value="'.$cat["zone_id"]. '">'.$cat['zone_name'].'</option>'; }
+	}
+}
+?> </select></td></tr> 
+<tr><td>zone</td>
+	<td id="zone_par" name="zone_par">
+	</td>
+</tr> 
+
+<tr><td>med_id</td><td><select id="med_id" name="med_id"><?php 
+ foreach($this->viewData["listMedecins"] as $cat){ if($cat["med_id"] == $this->viewData["Lmed"]->getmed_id()){ echo '<option value="'.$cat["med_id"]. '" selected>'.$cat['med_first_name'].'</option>'; }else{ echo '<option value="'.$cat["med_id"]. '">'.$cat['med_first_name'].'</option>'; }}?> </select></td></tr> 
+ 
+ <tr><td>count_id</td><td><select id="count_id" name="count_id"><?php 
+ foreach($this->viewData["listCountry"] as $cat){ if($cat["count_id"] == $this->viewData["Lmed"]->getcount_id()){ echo '<option value="'.$cat["count_id"]. '" selected>'.$cat['count_name'].'</option>'; }else{ echo '<option value="'.$cat["count_id"]. '">'.$cat['count_name'].'</option>'; }}?> </select></td></tr> 
+	<tr>
+		<td>med_phone : </td>
+		<td>
+			<input type="text" id="med_phone" name="med_phone"
+			value="<?php echo $this->viewData["Lmed"]->getmed_phone();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_phone");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>med_address : </td>
+		<td>
+			<input type="text" id="med_address" name="med_address"
+			value="<?php echo $this->viewData["Lmed"]->getmed_address();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_address");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>med_city : </td>
+		<td>
+			<input type="text" id="med_city" name="med_city"
+			value="<?php echo $this->viewData["Lmed"]->getmed_city();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_city");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>med_zip : </td>
+		<td>
+			<input type="text" id="med_zip" name="med_zip"
+			value="<?php echo $this->viewData["Lmed"]->getmed_zip();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_zip");
+			?>
+		</span>
+	</td></tr>
+ <tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+ </table></form>

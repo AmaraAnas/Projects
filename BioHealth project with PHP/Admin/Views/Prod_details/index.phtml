@@ -1,0 +1,88 @@
+﻿<h1>Details Produit</h1>
+<a href="?controler=Prod_details&action=ajouter&id=<?php echo  $this->viewData['id_prod'] ?>">Ajouter un nouveau Poids</a>
+<a href="?controler=Produit&page=1">Liste Produits</a>
+<FIELDSET><LEGEND align=top>Details :  </LEGEND>
+	<table>
+		<tr>
+			<td> Désignation : </td>
+			<td>  <?php  $list1 = explode("#bis#", $this->viewData['produit']->getNom()); echo $list1[1]; ?> </td>
+		</tr>
+		<tr>
+			<td> Description : </td>
+			<td><?php  $list1 = explode("#bis#", $this->viewData['produit']->getDescription()); echo $list1[1]; ?> </td>
+		</tr>
+		<tr>
+			<td> Quantité : </td>
+			<td> <?php echo $this->viewData['produit']->getQuantiteStock() ?>  </td>
+		</tr>
+		<tr>
+			<td> Promotion : </td>
+			<td><?php echo $this->viewData['produit']->getPromotion() ?>  </td>
+		</tr>
+		<tr>
+			<td> Categorie : </td>
+			<td><?php
+				foreach ($this->viewData['listCategorie'] as $cate) :
+					if ($this->viewData['produit']->getCategorieId() == $cate['categorie_id'])
+					{
+						$list = explode("#bis#",$cate['libelle']);
+						echo   $list[1] ;
+					}
+				endforeach;
+				?>  </td>
+		</tr>
+		<tr>
+			<td> Nouveauté : </td>
+			<td><?php if ($this->viewData['produit']->getEnNew() == 0) echo "Non"; else echo "Oui" ;?>  </td>
+		</tr>
+		<tr>
+			<td> En Top : </td>
+			<td><?php if ($this->viewData['produit']->getEnTop() == 0) echo "Non"; else echo "Oui" ;?>  </td>
+		</tr>
+		<tr>
+			<td> En Vedette : </td>
+			<td><?php if ($this->viewData['produit']->getEnVedette() == 0) echo "Non"; else echo "Oui" ;?>  </td>
+		</tr>
+
+	</table>
+</FIELDSET>
+
+<FIELDSET><LEGEND align=top>Les Poids :  </LEGEND>
+<table>
+	<tr>
+		<th>Poids</th><th>Prix</th>
+		<th>Quantite</th><th>Modification</th>
+		<th>Suppression</th>
+	</tr>
+	<?php
+		//On récupére la liste a partir de viewData
+		foreach($this->viewData['prod_details'] as $det) :
+			echo'<tr><td>'.$det['poids'].'</td>
+			     <td>'.$det['prix'].'</td>
+			     <td>'.$det['quantite'].'</td>';
+
+
+
+				echo  '<td><a href="?controler=Prod_details&action=modifier&id=
+					'.$det['id_details'].'">Modifier</a></td>
+				 <td><a href="?controler=Prod_details&action=supprimer&id=
+					'.$det['id_details'].'">Supprimer</a></td>'
+
+				 ;
+		endforeach;
+	?>
+
+</table>
+</FIELDSET>
+
+<FIELDSET><LEGEND align=top>Les Photos :  </LEGEND>
+
+<table>
+	<?php foreach($this->viewData['photo'] as $photo) :?>
+		<td><img src="Views/images/produits/<?php  echo $photo['photo']?>" alt="Mountain View" style="width:120px;height:200px;"></td>
+
+
+		<?php endforeach; ?>
+</table>
+
+</FIELDSET>

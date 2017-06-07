@@ -1,0 +1,60 @@
+﻿<h1>Supprimer un Medecins</h1>
+<form id="form1" method="post"><table>
+		<td>Nom : </td>
+		<td>
+			<input type="text" id="med_first_name" name="med_first_name"
+			value="<?php echo $this->viewData["Medecins"]->getmed_first_name();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Medecins"]->ValidationMessage("med_first_name");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>Prénom : </td>
+		<td>
+			<input type="text" id="med_last_name" name="med_last_name"
+			value="<?php echo $this->viewData["Medecins"]->getmed_last_name();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Medecins"]->ValidationMessage("med_last_name");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>Email : </td>
+		<td>
+			<input type="text" id="med_email" name="med_email"
+			value="<?php echo $this->viewData["Medecins"]->getmed_email();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Medecins"]->ValidationMessage("med_email");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>Mobile 1 : </td>
+		<td>
+			<input type="text" id="med_mobile1" name="med_mobile1"
+			value="<?php echo $this->viewData["Medecins"]->getmed_mobile1();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Medecins"]->ValidationMessage("med_mobile1");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>Mobile 2 : </td>
+		<td>
+			<input type="text" id="med_mobile2" name="med_mobile2"
+			value="<?php echo $this->viewData["Medecins"]->getmed_mobile2();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Medecins"]->ValidationMessage("med_mobile2");
+			?>
+		</span>
+	</td></tr><tr><td>Fonction</td><td><select id="fonc_id" name="fonc_id"><?php 
+ foreach($this->viewData["listFonction"] as $cat){ if($cat["fonc_id"] == $this->viewData["Medecins"]->getfonc_id()){ echo '<option value="'.$cat["fonc_id"]. '" selected>'.$cat['fonc_name'].'</option>'; }else{ echo '<option value="'.$cat["fonc_id"]. '">'.$cat['fonc_name'].'</option>'; }}?> </select></td></tr> <tr><td>Spécialité</td><td><select id="spe_id" name="spe_id"><?php 
+ foreach($this->viewData["listSpecialite"] as $cat){ if($cat["spe_id"] == $this->viewData["Medecins"]->getspe_id()){ echo '<option value="'.$cat["spe_id"]. '" selected>'.$cat['spe_name'].'</option>'; }else{ echo '<option value="'.$cat["spe_id"]. '">'.$cat['spe_name'].'</option>'; }}?> </select></td></tr> 
+ <tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+ </table></form>

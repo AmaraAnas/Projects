@@ -1,0 +1,31 @@
+<h1>Supprimer Details Produit </h1>
+<form id="form1" method="post"><table>
+		<tr>
+			<td><input  type="hidden" id="id_details" name="id_details" readonly="true"
+					   value="<?php echo $this->viewData['prod_details']->getIdDetails();?>"/>
+
+			</td>
+		</tr>
+		<tr>
+			<td>Poids : </td>
+			<td><input type="text" id="poids" name="poids" readonly="true" value="<?php echo $this->viewData['prod_details']->getPoids();?>"/>(g)
+
+
+			</td>
+		</tr>
+		<tr>
+			<td>Prix : </td>
+			<td><input type="text" id="prix" name="prix" readonly="true" value="<?php echo $this->viewData['prod_details']->getPrix();?>"/>(DT)
+
+			</td>
+		</tr>
+		<tr>
+			<td>Quantité : </td>
+			<td><input type="text" id="quantite" name="quantite"  readonly="true" value="<?php echo $this->viewData['prod_details']->getQuantite();?>"/>
+
+			</td>
+		</tr>
+				<tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Produit">Retour</a>

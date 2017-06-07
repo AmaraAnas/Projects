@@ -1,0 +1,17 @@
+<h1>Supprimer Compte</h1>
+<form id="form1" method="post"><table>
+		<tr>
+			<td><input readonly type="hidden" id="admin_id" name="admin_id"
+					   value="<?php echo $this->viewData['admin']->getAdminId();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td> Login : </td>
+			<td><input type="input" id="login" name="login" readonly  value="<?php echo $this->viewData['admin']->getLogin();?>"/>
+			</td>
+		</tr>
+
+				<tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Admin">Retour</a>

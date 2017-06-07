@@ -1,0 +1,23 @@
+<h1>Listes de Fonction</h1>
+<?php
+//echo "<pre>";print_r($this->viewData["listFonction"]);
+?>
+<table class="stat-table" border="0" cellspacing="2" cellpadding="2">
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listFonction"] as $fonction):
+		echo '<tr>	<td>'.$fonction["fonc_id"].'<td>
+		<td>'.$fonction["fonc_name"].'<td>
+			<td><a href="?controler=Fonction&action=modifier&id='.$fonction['fonc_id'].'">Modifier</a></td>
+			<td><a href="?controler=Fonction&action=supprimer&id='.$fonction['fonc_id'].'">Supprimer</a></td>
+		</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Fonction&action=ajouter">Ajouter une Fonction</a>

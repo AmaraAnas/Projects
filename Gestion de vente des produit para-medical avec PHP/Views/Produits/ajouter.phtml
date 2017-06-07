@@ -1,0 +1,32 @@
+<h1>Ajouter un nouveau Produits</h1><form id="form1" method="post">		<table>	
+
+		<td>Libele : </td>
+		<td><input type="text" id="pro_name" name="pro_name" 
+			value="<?php echo $this->viewData['produits']->getpro_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['produits']->ValidationMessage("pro_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Ref : </td>
+		<td><input type="text" id="pro_ref" name="pro_ref" 
+			value="<?php echo $this->viewData['produits']->getpro_ref();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['produits']->ValidationMessage("pro_ref");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Observation : </td>
+		<td><input type="text" id="pro_obs" name="pro_obs" 
+			value="<?php echo $this->viewData['produits']->getpro_obs();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['produits']->ValidationMessage("pro_obs");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Produits">Retour</a>

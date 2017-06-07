@@ -1,0 +1,23 @@
+<h1>Ajouter un nouveau Categorie</h1><form id="form1" method="post">		<table>	<tr>
+		<td>Libele : </td>
+		<td><input type="text" id="cat_name" name="cat_name" 
+			value="<?php echo $this->viewData['categorie']->getcat_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['categorie']->ValidationMessage("cat_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Etat : </td>
+		<td><input type="text" id="etat" name="etat" 
+			value="<?php echo $this->viewData['categorie']->getetat();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['categorie']->ValidationMessage("etat");
+			?></span>
+		</td>
+	</tr>
+	<!--			<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>  -->
+			</table>
+			<input type="submit" value="Ajouter" />
+		</form>
+	<a href="?controler=Categorie">Retour</a>

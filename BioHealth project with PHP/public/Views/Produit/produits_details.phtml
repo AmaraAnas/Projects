@@ -1,0 +1,319 @@
+<?php
+        function getCategoryName($id,$c,$p)
+        {
+          foreach ($p as $key => $value) 
+          {
+            if($value['produit_id']==$id)
+            {
+              foreach ($c as $k => $v) 
+              {
+                if ($v['categorie_id']==$value['categorie_id'])
+                {
+                  return $v['libelle'];
+                }
+              }
+            }
+          }
+          return "catégorie non identifiée.";
+        }
+        function getProductName($id,$p)
+        {
+          foreach ($p as $key => $value) 
+          {
+            if($value['produit_id']==$id)
+            {
+              return $value['nom'];
+            }
+          }
+          return "";
+        }
+        function getProductPrice($id,$p,$d)
+        {
+          foreach ($p as $key => $value) 
+          {
+            if($value['produit_id']==$id)
+            {
+              foreach ($d as $k => $v) 
+              {
+                if ($v['id_prod']==$value['produit_id'])
+                {
+                  return $v['prix'];
+                }
+              }
+            }
+          }
+          return 0;
+        }
+        function getProductQte($id,$p)
+        {
+          foreach ($p as $key => $value) 
+          {
+            if($value['produit_id']==$id)
+            {
+              return $value['quantite_stock'];
+            }
+          }
+          return 0;
+        }
+        function getProductDescription($id,$p)
+        {
+          foreach ($p as $key => $value) 
+          {
+            if($value['produit_id']==$id)
+            {
+              return $value['description'];
+            }
+          }
+          return "";
+        }
+	$tab=$this->viewData['listPhoto'];
+	$id=$_GET['id'];
+  $i=1;
+  foreach ($tab as $key => $value) 
+  {
+      if ($value['id_prod']==$id) 
+      {
+        if($i==1)
+        {
+          echo '<div class="push-down-20"> <img class="js--product-preview" alt="Single product image" src="images/produits/'.$value['photo'].'" width="360" height="458"> </div>
+          <div class="product-preview__thumbs  clearfix">';
+        }
+        else
+        {
+          echo '<div class="product-preview__thumb  active  js--preview-thumbs"> <a href=".js--product-preview" data-src="images/produits/'.$value['photo'].'"> <img src="images/produits/'.$value['photo'].'" alt="Single product thumbnail image" width="66" height="82" /> </a> </div>';
+        }
+        $i++;
+      }
+  }
+  if($i==1)
+  {
+    echo '<div class="push-down-20"> <img class="js--product-preview" alt="Single product image" src="images/produits/d.jpg" width="360" height="458"> </div>
+          <div class="product-preview__thumbs  clearfix">
+          <div class="product-preview__thumb  active  js--preview-thumbs"> <a href=".js--product-preview" data-src="images/produits/d.jpg"> <img src="images/produits/d.jpg" alt="Single product thumbnail image" width="66" height="82" /> </a> </div>';
+  }
+?>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-8">
+        <div class="products__content">
+          <div class="push-down-30"></div>
+          <span class="products__category"><?php echo getCategoryName($id,$this->viewData['listCategorie'],$this->viewData['listProduit']); ?></span>
+          <h1 class="single-product__title"><span class="light"></span> <?php echo getProductName($id,$this->viewData['listProduit']); ?></h1>
+          <span class="single-product__price"><?php echo getProductPrice($id,$this->viewData['listProduit'],$this->viewData['listdetailsproduits']); ?>$</span>
+          
+          <?php
+          $stock='<span class="out-of-stock">&bull;</span> <span class="in-stock--text">Stock épuisé</span>';
+          if(getProductQte($id,$this->viewData['listProduit'])>0)
+              $stock='<span class="in-stock">&bull;</span> <span class="in-stock--text">En stock</span>';
+
+          echo $stock;
+          ?>
+          <hr class="bold__divider">
+          <p class="single-product__text"> <?php echo getProductDescription($id,$this->viewData['listProduit']); ?>. </p>
+          <hr class="bold__divider">
+          <!-- Single button -->
+          <select name="select" class="btn  btn-shop">
+            <?php
+              $tab=$this->viewData['listdetailsproduits'];
+              foreach ($tab as $key => $value) 
+              {
+                if($value['id_prod']==$id)
+                {
+                  echo '<option>'.$value['poids'].'</option>';
+                }
+              }
+            ?>
+          </select>
+          <!-- Quantity buttons -->
+          <div class="quantity  js--quantity">
+            <input type="button" value="-" class="quantity__button  js--minus-one  js--clickable">
+            <input type="text" name="quantity" value="1" class="quantity__input">
+            <input type="button" value="+" class="quantity__button  js--plus-one  js--clickable">
+          </div>
+          <!-- Add to cart button -->
+          <a class="btn btn-primary--transition" href="#"> <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> <span class="single-product__btn-text">Ajouter au panier</span> </a>
+          <!-- Social banners -->
+          <div class="row">
+            <div class="col-xs-12  col-sm-6  col-md-4">
+              <div class="banners-small  banners-small--social"> <a href="javascript:void(0);" class="social"><span class="zocial-facebook" style="text-transform:lowercase"></span> Partager sur<br>
+                <span class="banners-small--text">Facebook</span> </a> </div>
+            </div>
+            <div class="col-xs-12 col-sm-6  col-md-4">
+              <div class="banners-small  banners-small--social"> <a href="javascript:void(0);" class="social"><span class="zocial-twitter"></span> Twitter le sur<br>
+                <span class="banners-small--text">Twitter</span> </a> </div>
+            </div>
+            <div class="col-xs-12 col-sm-6  col-md-4">
+              <div class="banners-small  banners-small--social"> <a href="javascript:void(0);" class="social"><span class="zocial-pinterest"></span> Pin on<br>
+                <span class="banners-small--text">Pinterest</span> </a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Tabs -->
+  <div class="push-down-30">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Nav tabs -->
+        <ul class="nav  nav-tabs">
+          <li class="active"><a href="#tabDesc" data-toggle="tab">Description</a></li>
+          <li><a href="#tabManufacturer" data-toggle="tab">Caractéristiques</a></li>
+          <li><a href="#tabReviews" data-toggle="tab">Avis clients (0)</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane  fade  in  active" id="tabDesc">
+            <div class="row">
+              <div class="col-xs-12  col-sm-6">
+                <h5>Description</h5>
+                <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce est purus, fringilla sit amet arcu quis, feugiat ultrices metus. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. In hac habitasse platea dictumst. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. In hac habitasse platea dictumst.</p>
+              </div>
+              <div class="col-xs-12  col-sm-6">
+                <h5>A propos de nous</h5>
+                <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce est purus, fringilla sit amet arcu quis, feugiat ultrices metus. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. In hac habitasse platea dictumst. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. In hac habitasse platea dictumst.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane  fade" id="tabManufacturer">
+            <h5>Caractéristiques</h5>
+            <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce est purus, fringilla sit amet arcu quis, feugiat ultrices metus. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. In hac habitasse platea dictumst.</p>
+          </div>
+          <div class="tab-pane  fade" id="tabReviews">
+            <h5>Avis clients</h5>
+            <p class="tab-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce est purus, fringilla sit amet arcu quis, feugiat ultrices metus. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus. In hac habitasse platea dictumst. Vestibulum lorem dolor, pharetra sit amet urna nec, hendrerit scelerisque risus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation -->
+  <div class="products-navigation  push-down-15">
+    <div class="row">
+      <div class="col-xs-12  col-sm-8">
+        <div class="products-navigation__title">
+          <h3><span class="light">Produits de la même</span> catégorie</h3>
+        </div>
+      </div>
+      <div class="col-xs-12  col-sm-4">
+        <div class="products-navigation__arrows"> <a href="#js--latest-products-carousel2" data-slide="prev"><span class="glyphicon  glyphicon-chevron-left  glyphicon-circle  products-navigation__arrow"></span></a>&nbsp; <a href="#js--latest-products-carousel2" data-slide="next"><span class="glyphicon  glyphicon-chevron-right  glyphicon-circle  products-navigation__arrow"></span></a> </div>
+      </div>
+    </div>
+  </div>
+  <!-- Products -->
+  <div id="js--latest-products-carousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <?php
+
+      $x=$this->viewData['listdetailsproduits'];
+    $y=$this->viewData['listCategorie'];
+    $z=$this->viewData['listPhoto'];
+    function getPrice2($id,$x)
+    {
+      for ($i=0; $i < count($x); $i++) 
+      { 
+        if($x[$i]['id_prod']==$id)
+        {
+          return $x[$i]['prix'];
+        }
+      }
+      return 0;
+    }
+    function getCategoryName2($id,$x)
+    {
+      for ($i=0; $i < count($x); $i++) 
+      { 
+        if($x[$i]['categorie_id']==$id)
+        {
+          return $x[$i]['libelle'];
+        }
+      }
+      return "catégorie non identifiée.";
+    }
+    function getFirstProductPhoto2($id,$x)
+    {
+      for ($i=0; $i < count($x); $i++) 
+      { 
+        if($x[$i]['id_prod']==$id)
+        {
+          return $x[$i]['photo'];
+        }
+      }
+      return "d.jpg";
+    }
+    function getCategoryId($id,$y)
+    {
+      for ($i=0; $i < count($y); $i++) 
+      { 
+        if($y[$i]['produit_id']==$id)
+        {
+          return $y[$i]['categorie_id'];
+        }
+      }
+      return 0;
+    }
+
+        $tab=$this->viewData['listProduit'];
+    $j=1;
+    echo '<div class="item active"><div class="row">';
+    foreach ($tab as $i => $value) 
+    {
+      if ($value['categorie_id']==getCategoryId($id,$this->viewData['listProduit'])) 
+      {
+
+        $idx=$value['produit_id'];
+        $name=$value['nom'];
+        $c_id=getCategoryName2($value['categorie_id'],$y);
+        $prix=getPrice2($idx,$x);
+        $photo=getFirstProductPhoto2($idx,$z);
+        $stock='<span class="out-of-stock">&bull;</span> <span class="in-stock--text">Stock épuisé</span>';
+        if($value['quantite_stock']>0)
+          $stock='<span class="in-stock">&bull;</span> <span class="in-stock--text">En stock</span>';
+        echo '<div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="'.$prix.'$" data-rating="5">
+            <div class="products__single">
+              <figure class="products__image">
+                <a href="produit-details.php?id='.$idx.'">
+                  <img alt="#" class="product__image" width="360" height="458" src="images/produits/'.$photo.'">
+                </a>
+                <div class="product-overlay">
+                  <a class="product-overlay__more" href="produit-details.php?id='.$idx.'">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </a>
+                  <a class="product-overlay__cart" href="#">
+                    +<span class="glyphicon glyphicon-shopping-cart"></span>
+                  </a>
+                  <div class="product-overlay__stock">
+                    '.$stock.'
+                  </div>
+                </div>
+              </figure>
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 class="products__title">
+                    <a class="products__link" href="produits-grille.php">'.$name.'</a><a class="products__link  js--isotope-title" href="produit-details.php?id='.$idx.'"></a>
+                  </h5>
+                </div>
+                <div class="col-xs-3">
+                  <div class="products__price">
+                    '.$prix.'$
+                  </div>
+                </div>
+              </div>
+              <div class="products__category">
+                '.$c_id.'
+              </div>
+            </div>
+          </div>
+          <div class="clearfix visible-xs"></div> ';
+        if($j%4==0)
+        {
+          echo '<div class="clearfix visible-xs"></div></div></div><div class="item"><div class="row">';
+        }
+        $j++;
+      }
+    }
+
+      ?>
+  </div>
+</div>

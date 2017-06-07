@@ -1,0 +1,21 @@
+<h1>Listes des Lpro_emp_zone</h1>
+	<table>
+		<tr>
+			<th>Modification</th>
+			<th>Suppression</th>
+			<th >zone_id</th>
+			<th >empl_id</th>
+			<th >pro_id</th>
+			</tr><?php 
+
+	foreach($this->viewData["listLpro_emp_zone"] as $li_pro_emp_zone) :
+		echo'<tr>
+			<td id="id" name="id" style="display: none;">'.$li_pro_emp_zone["li_id"].'</td>
+	<td><a href="?controler=Lpro_emp_zone&action=modifier&id='.$li_pro_emp_zone["li_id"].'">Modifier</a></td>
+	<td><a href="?controler=Lpro_emp_zone&action=supprimer&id='.$li_pro_emp_zone["li_id"].'">Supprimer</a></td>
+			<td>'.$li_pro_emp_zone[zone_id].'</td>
+			<td>'.$li_pro_emp_zone[empl_id].'</td>
+			<td>'.$li_pro_emp_zone[pro_id].'</td></tr>';
+endforeach; ?>
+</table>
+<a href="?controler=Lpro_emp_zone&action=ajouter">Ajouter un nouveau li_pro_emp_zone</a>

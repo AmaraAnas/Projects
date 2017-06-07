@@ -1,0 +1,268 @@
+<?php
+		$x=$this->viewData['listdetailsproduits'];
+		$y=$this->viewData['listCategorie'];
+		$z=$this->viewData['listPhoto'];
+		function getPrice($id,$x)
+		{
+			for ($i=0; $i < count($x); $i++) 
+			{ 
+				if($x[$i]['id_prod']==$id)
+				{
+					return $x[$i]['prix'];
+				}
+			}
+			return 0;
+		}
+		function getCategoryName($id,$x)
+		{
+			for ($i=0; $i < count($x); $i++) 
+			{ 
+				if($x[$i]['categorie_id']==$id)
+				{
+					return $x[$i]['libelle'];
+				}
+			}
+			return "catégorie non identifiée.";
+		}
+		function getFirstProductPhoto($id,$x)
+		{
+			for ($i=0; $i < count($x); $i++) 
+			{ 
+				if($x[$i]['id_prod']==$id)
+				{
+					return $x[$i]['photo'];
+				}
+			}
+			return "d.jpg";
+		}
+ 		$tab=$this->viewData['listProduit'];
+		$j=1;
+		echo '<div class="item active"><div class="row">';
+		foreach ($tab as $i => $value) 
+		{
+			if ($value['en_new']==1) 
+			{
+				$id=$value['produit_id'];
+				$name=$value['nom'];
+				$c_id=getCategoryName($value['categorie_id'],$y);
+				$prix=getPrice($id,$x);
+				$photo=getFirstProductPhoto($id,$z);
+				$stock='<span class="out-of-stock">&bull;</span> <span class="in-stock--text">Stock épuisé</span>';
+				if($value['quantite_stock']>0)
+					$stock='<span class="in-stock">&bull;</span> <span class="in-stock--text">En stock</span>';
+				echo '<div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="'.$prix.'$" data-rating="5">
+					  <div class="products__single">
+					    <figure class="products__image">
+					      <a href="produit-details.php?id='.$id.'">
+					        <img alt="#" class="product__image" width="360" height="458" src="images/produits/'.$photo.'">
+					      </a>
+					      <div class="product-overlay">
+					        <a class="product-overlay__more" href="produit-details.php?id='.$id.'">
+					          <span class="glyphicon glyphicon-search"></span>
+					        </a>
+					        <a class="product-overlay__cart" href="#">
+					          +<span class="glyphicon glyphicon-shopping-cart"></span>
+					        </a>
+					        <div class="product-overlay__stock">
+					          '.$stock.'
+					        </div>
+					      </div>
+					    </figure>
+					    <div class="row">
+					      <div class="col-xs-9">
+					        <h5 class="products__title">
+					          <a class="products__link" href="produits-grille.php">'.$name.'</a><a class="products__link  js--isotope-title" href="produit-details.php?id='.$id.'"></a>
+					        </h5>
+					      </div>
+					      <div class="col-xs-3">
+					        <div class="products__price">
+					          '.$prix.'$
+					        </div>
+					      </div>
+					    </div>
+					    <div class="products__category">
+					      '.$c_id.'
+					    </div>
+					  </div>
+					</div>
+					<div class="clearfix visible-xs"></div> ';
+				if($j%4==0)
+				{
+					echo '<div class="clearfix visible-xs"></div></div></div><div class="item"><div class="row">';
+				}
+				$j++;
+			}
+		}
+		echo '</div></div>';
+
+
+		echo ' 
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<a href="produits.php">
+						<div class="banners-medium">
+							<span class="banners-text">Voir nos nouveautés dans la catégorie <strong>"Anti-âge"</strong></span>
+							<span class="glyphicon  glyphicon-circle  glyphicon-chevron-right"></span>
+						</div>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<a href="produits.php">
+						<div class="banners-medium">
+							<span class="banners-text">Jusqu\'à 35% de réduction dans la catégorie "Bien-être"</span>
+							<span class="glyphicon  glyphicon-circle  glyphicon-chevron-right"></span>
+						</div>
+					</a>
+				</div>
+			</div>
+				<!-- Navigation -->
+			<div class="products-navigation  push-down-15">
+				<div class="products-navigation__title">
+					<h3><span class="light">Nos </span> Promotions</h3>
+				</div>
+			</div>';
+
+
+		$tab=$this->viewData['listProduit'];
+		$j=1;
+		echo '<div class="row">';
+		foreach ($tab as $i => $value) 
+		{
+			if ($value['promotion']>0) 
+			{
+				$id=$value['produit_id'];
+				$name=$value['nom'];
+				$c_id=getCategoryName($value['categorie_id'],$y);
+				$prix=getPrice($id,$x);
+				$photo=getFirstProductPhoto($id,$z);
+				$stock='<span class="out-of-stock">&bull;</span> <span class="in-stock--text">Stock épuisé</span>';
+				if($value['quantite_stock']>0)
+					$stock='<span class="in-stock">&bull;</span> <span class="in-stock--text">En stock</span>';
+				echo '<div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="20$" data-rating="5">
+					  <div class="products__single">
+					    <figure class="products__image">
+					      <a href="produit-details.php?id='.$id.'">
+					        <img alt="#" class="product__image" width="360" height="458" src="images/produits/'.$photo.'">
+					      </a>
+					      <div class="product-overlay">
+					        <a class="product-overlay__more" href="produit-details.php?id='.$id.'">
+					          <span class="glyphicon glyphicon-search"></span>
+					        </a>
+					        <a class="product-overlay__cart" href="#">
+					          +<span class="glyphicon glyphicon-shopping-cart"></span>
+					        </a>
+					        <div class="product-overlay__stock">
+					          '.$stock.'
+					        </div>
+					      </div>
+					    </figure>
+					    <div class="row">
+					      <div class="col-xs-9">
+					        <h5 class="products__title">
+					          <a class="products__link" href="produits-list.php">'.$name.'</a><a class="products__link  js--isotope-title" href="produit-details.php?id='.$id.'"></a>
+					        </h5>
+					      </div>
+					      <div class="col-xs-3">
+					        <div class="products__price">
+					          '.$prix.'$
+					        </div>
+					      </div>
+					    </div>
+					    <div class="products__category">
+					      '.$c_id.'
+					    </div>
+					  </div>
+					</div>
+					<div class="clearfix visible-xs"></div> ';
+				if($j%4==0)
+				{
+					echo '<div class="clearfix visible-xs"></div></div><div class="row">';
+				}
+				$j++;
+			}
+		}
+		echo '</div>';
+
+
+		echo '<div class="products-navigation  push-down-15">
+			<div class="row">
+				<div class="col-xs-12  col-sm-8">
+					<div class="products-navigation__title">
+						<h3><span class="light">Nos produits en</span> Vedette</h3>
+					</div>
+				</div>
+				<div class="col-xs-12  col-sm-4">
+					<div class="products-navigation__arrows">
+						<a href="#js--latest-products-carousel2" data-slide="prev"><span class="glyphicon  glyphicon-chevron-left  glyphicon-circle  products-navigation__arrow"></span></a>&nbsp;
+						<a href="#js--latest-products-carousel2" data-slide="next"><span class="glyphicon  glyphicon-chevron-right  glyphicon-circle  products-navigation__arrow"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Products -->
+		<div id="js--latest-products-carousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">';
+
+
+		$tab=$this->viewData['listProduit'];
+		$j=1;
+		echo '<div class="item active"><div class="row">';
+		foreach ($tab as $i => $value) 
+		{
+			if ($value['en_vedette']==1) 
+			{
+				$id=$value['produit_id'];
+				$name=$value['nom'];
+				$c_id=getCategoryName($value['categorie_id'],$y);
+				$prix=getPrice($id,$x);
+				$photo=getFirstProductPhoto($id,$z);
+				$stock='<span class="out-of-stock">&bull;</span> <span class="in-stock--text">Stock épuisé</span>';
+				if($value['quantite_stock']>0)
+					$stock='<span class="in-stock">&bull;</span> <span class="in-stock--text">En stock</span>';
+				echo '<div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="20$" data-rating="5">
+					  <div class="products__single">
+					    <figure class="products__image">
+					      <a href="produit-details.php?id='.$id.'">
+					        <img alt="#" class="product__image" width="360" height="458" src="images/produits/'.$photo.'">
+					      </a>
+					      <div class="product-overlay">
+					        <a class="product-overlay__more" href="produit-details.php?id='.$id.'">
+					          <span class="glyphicon glyphicon-search"></span>
+					        </a>
+					        <a class="product-overlay__cart" href="#">
+					          +<span class="glyphicon glyphicon-shopping-cart"></span>
+					        </a>
+					        <div class="product-overlay__stock">
+					          '.$stock.'
+					        </div>
+					      </div>
+					    </figure>
+					    <div class="row">
+					      <div class="col-xs-9">
+					        <h5 class="products__title">
+					          <a class="products__link" href="produits-list.php">'.$name.'</a><a class="products__link  js--isotope-title" href="produit-details.php?id='.$id.'"></a>
+					        </h5>
+					      </div>
+					      <div class="col-xs-3">
+					        <div class="products__price">
+					          '.$prix.'$
+					        </div>
+					      </div>
+					    </div>
+					    <div class="products__category">
+					      '.$c_id.'
+					    </div>
+					  </div>
+					</div>
+					<div class="clearfix visible-xs"></div> ';
+				if($j%4==0)
+				{
+					echo '<div class="clearfix visible-xs"></div></div></div><div class="item"><div class="row">';
+				}
+				$j++;
+			}
+		}
+		echo '</div></div>';
+?>

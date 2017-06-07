@@ -1,0 +1,23 @@
+<h1>Listes des Users</h1>
+	<table>
+		<tr>
+			<th>Modification</th>
+			<th>Suppression</th>
+			<th >empl_id</th>
+			<th >cat_id</th>
+			<th >user_username</th>
+			<th >user_password</th>
+			</tr><?php 
+
+	foreach($this->viewData["listUsers"] as $users) :
+		echo'<tr>
+			<td id="id" name="id" style="display: none;">'.$users["user_id"].'</td>
+	<td><a href="?controler=Users&action=modifier&id='.$users["user_id"].'">Modifier</a></td>
+	<td><a href="?controler=Users&action=supprimer&id='.$users["user_id"].'">Supprimer</a></td>
+			<td>'.$users[empl_id].'</td>
+			<td>'.$users[cat_id].'</td>
+			<td>'.$users[user_username].'</td>
+			<td>'.$users[user_password].'</td></tr>';
+endforeach; ?>
+</table>
+<a href="?controler=Users&action=ajouter">Ajouter un nouveau users</a>

@@ -1,0 +1,24 @@
+<h1>Listes de Li_pro_emp_zone</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Zone<th>
+		<th>Delegue<th>
+		<th>Produit<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listLi_pro_emp_zone"] as $li_pro_emp_zone):
+		echo '<tr>	<td>'.$li_pro_emp_zone["li_id"].'<td>
+	<td>'.$li_pro_emp_zone["zone_id"].'<td>
+	<td>'.$li_pro_emp_zone["empl_id"].'<td>
+	<td>'.$li_pro_emp_zone["pro_id"].'<td>
+		<td><a href="?controler=Li_pro_emp_zone&action=modifier&id='.$li_pro_emp_zone['li_id'].'">Modifier</a></td>
+		<td><a href="?controler=Li_pro_emp_zone&action=supprimer&id='.$li_pro_emp_zone['li_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Li_pro_emp_zone&action=ajouter">Ajouter un nouveau produit</a>

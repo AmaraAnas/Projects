@@ -1,0 +1,72 @@
+﻿<h1>Supprimer un produit</h1>
+
+<form id="form1" method="post">
+	<table>
+		<tr>
+			<td><input type="hidden" id="client_id" name="client_id" readonly="true"
+					   value="<?php echo $this->viewData['client']->getClientId();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Email : </td>
+			<td>
+				<input type="text" id="email" name="email" readonly="true"
+					   value="<?php echo $this->viewData['client']->getEmail();?>"/>
+			</td>
+		<tr>
+			<td>Password : </td>
+			<td>
+				<input type="text" id="password" name="password" readonly="true"
+					   value="<?php echo $this->viewData['client']->getPassword();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Nom  : </td>
+			<td><input type="text" id="first_name" name="first_name" readonly="true"
+					   value="<?php echo $this->viewData['client']->getFirstName();?>"/>
+			</td>
+		<tr>
+			<td>Prenom : </td>
+			<td><input type="text" id="last_name" name="last_name" readonly="true"
+					   value="<?php echo $this->viewData['client']->getLastName();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Telephone : </td>
+			<td><input type="text" id="phone" name="phone" readonly="true"
+					   value="<?php echo $this->viewData['client']->getPhone();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Pays : </td>
+			<td>
+				<select id="pays_id" name="pays_id" readonly="true">
+					<?php
+				foreach($this->viewData['listPays'] as $pays)
+					echo '<option value="'.$pays['pays_id'].'">
+							'.$pays	['pays'].'</option>';
+				?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Ville : </td>
+			<td>
+				<select id="ville_id" name="ville_id" readonly="true">
+					<?php
+					foreach($this->viewData['listVille'] as $ville)
+						echo '<option value="'.$ville['ville_id'].'">
+							'.$ville['libelle'].'</option>';
+					?>
+				</select>
+			</td>
+		</tr>
+		<tr><td colspan='2'><input type="submit" value= "  Supprimer  " /></td></tr>
+	</table>
+</form>
+
+<a href="?controler=Client&page=1">Retour</a>
+
+
+
+

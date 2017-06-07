@@ -1,0 +1,31 @@
+<h1>Supprimer un Users</h1>
+<form id="form1" method="post"><table>
+<tr><td>user_id: </td>
+<td><input type="text" id="user_id" name="user_id" readonly="true" 
+value="<?php echo $this->viewData["Users"]->getuser_id();?>"/></td></tr><tr><td>empl_id</td><td><select id="empl_id" name="empl_id"><?php 
+ foreach($this->viewData["listEmployer"] as $cat){ if($cat["empl_id"] == $this->viewData["Users"]->getempl_id()){ echo '<option value="'.$cat["empl_id"]. '" selected>'.$cat['empl_first_name'].'</option>'; }else{ echo '<option value="'.$cat["empl_id"]. '">'.$cat['empl_first_name'].'</option>'; }}?> </select></td></tr> <tr><td>cat_id</td><td><select id="cat_id" name="cat_id"><?php 
+ foreach($this->viewData["listCategorie"] as $cat){ if($cat["cat_id"] == $this->viewData["Users"]->getcat_id()){ echo '<option value="'.$cat["cat_id"]. '" selected>'.$cat['cat_name'].'</option>'; }else{ echo '<option value="'.$cat["cat_id"]. '">'.$cat['cat_name'].'</option>'; }}?> </select></td></tr> 
+	<tr>
+		<td>user_username : </td>
+		<td>
+			<input type="text" id="user_username" name="user_username"
+			value="<?php echo $this->viewData["Users"]->getuser_username();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Users"]->ValidationMessage("user_username");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>user_password : </td>
+		<td>
+			<input type="text" id="user_password" name="user_password"
+			value="<?php echo $this->viewData["Users"]->getuser_password();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Users"]->ValidationMessage("user_password");
+			?>
+		</span>
+	</td></tr>
+ <tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+ </table></form>

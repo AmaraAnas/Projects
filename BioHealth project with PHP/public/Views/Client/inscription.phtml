@@ -1,0 +1,73 @@
+<?php
+	$pays=$this->viewData['listPays'];
+	$ville=$this->viewData['listVille'];
+
+	echo '<script type="text/javascript">
+	var pays = new Array(';
+	$i=0;
+	foreach($pays as $value) 
+	{
+		if($i<count($pays)-1)
+	 		echo "{pays_id:".$value['pays_id'].",pays:'".$value['pays']."'},";
+	 	else
+	 		echo "{pays_id:".$value['pays_id'].",pays:'".$value['pays']."'}";
+
+	 	$i++;
+	}
+	echo ');';
+	echo 'var ville = new Array(';
+	$i=0;
+	foreach($ville as $value) 
+	{
+	  	if($i<count($ville)-1)
+	 		echo "{ville_id:".$value['ville_id'].",pays_id:".$value['pays_id'].",libelle:'".$value['libelle']."'},";
+	 	else
+	 		echo "{ville_id:".$value['ville_id'].",pays_id:".$value['pays_id'].",libelle:'".$value['libelle']."'}";
+
+	 	$i++;
+
+	}
+	echo ');</script>';
+?>
+<form method="post" class="push-down-15">
+  <div class="form-group">
+    <input type="text" id="pseudo" name="pseudo" class="form-control  form-control--contact" placeholder="Pseudonyme">
+  </div>
+  <div class="form-group">
+    <input type="text" id="email" name="email" class="form-control  form-control--contact" placeholder="E-mail">
+  </div>
+  <div class="form-group">
+    <input type="text" id="password" name="password" class="form-control  form-control--contact" placeholder="Mot de passe">
+  </div>
+
+  <div class="form-group">
+    <input type="text" id="first_name" name="first_name" class="form-control  form-control--contact" placeholder="Prénom">
+  </div>
+
+  <div class="form-group">
+    <input type="text" id="last_name" name="last_name" class="form-control  form-control--contact" placeholder="Nom">
+  </div>
+
+  
+  <div class="form-group">
+    <SELECT NAME="pays" id="pays" class="form-control  form-control--contact" onclick="selectVille();">
+    </SELECT>
+  </div>
+  <div class="form-group" id="villediv" style="display: none;">
+    <SELECT name="ville_id" id="ville_id" class="form-control  form-control--contact">
+     
+    </SELECT>
+  </div>
+
+  <div class="form-group">
+    <input type="text" id="zip" name="zip" class="form-control  form-control--contact" placeholder="Code postal">
+  </div>
+  <div class="form-group">
+    <input type="text" id="street" name="street" class="form-control  form-control--contact" placeholder="Rue">
+  </div>
+  <div class="form-group">
+    <input type="number" id="phone" name="phone" class="form-control  form-control--contact" placeholder="Téléphone">
+  </div>
+
+  <button type="submit" class="btn  btn-primary">S'inscrire</button>
+</form>

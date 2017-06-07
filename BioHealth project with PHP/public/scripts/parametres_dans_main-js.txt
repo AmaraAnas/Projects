@@ -1,0 +1,5 @@
+Chercher:
+---------
+currencySymbol:"€"
+
+latLng:[35.037359,9.482198],zoom:15

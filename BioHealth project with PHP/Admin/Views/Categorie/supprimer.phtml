@@ -1,0 +1,35 @@
+<h1>Supprimer un Categorie</h1>
+<form id="form1" method="post"><table>
+		<tr>
+			<td><input  type="hidden" id="categorie_id" name="categorie_id" readonly="true"
+					   value="<?php echo $this->viewData['categorie']->getCategorieId();?>"/>
+			</td>
+		<tr>
+<?php   $current= $this->viewData['categorie']->getLibelle();
+			$listname = explode("#bis#",$current);         ?>
+			<td>Libele : </td>
+			<td><input type="text" id="libelle" name="libelle" readonly="true"
+					   value="<?php echo $listname[1]; ?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Categorie Parent : </td>
+			<td>
+				<select id="id_parent" name="id_parent" readonly="true">
+					<?php
+					echo '<option value="0">----</option>';
+					foreach($this->viewData['listCategorie'] as $cat)
+						if($this->viewData['categorie']->getCategorieId() != $cat['categorie_id'])
+						{
+							$list = explode("#bis#",$cat['libelle']);
+							echo '<option value="'.$cat['categorie_id'].'">
+							'.$list[1].'</option>';}
+					?>
+				</select>
+
+			</td>
+		</tr>
+				<tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Categorie&page=1">Retour</a>

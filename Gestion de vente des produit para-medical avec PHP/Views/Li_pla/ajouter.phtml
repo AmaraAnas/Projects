@@ -1,0 +1,62 @@
+<h1>Ajouter un nouveau Li_pla</h1><form id="form1" method="post">	
+	<table>
+
+	<tr>
+		<td>Medecin : </td>
+		<td><input type="text" id="med_id" name="med_id" 
+			value="<?php echo $this->viewData['li_pla']->getmed_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pla']->ValidationMessage("med_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Produit : </td>
+		<td><input type="text" id="pro_id" name="pro_id" 
+			value="<?php echo $this->viewData['li_pla']->getpro_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pla']->ValidationMessage("pro_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Observation : </td>
+		<td><input type="text" id="observation" name="observation" 
+			value="<?php echo $this->viewData['li_pla']->getobservation();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pla']->ValidationMessage("observation");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Etat : </td>
+		<td><input type="text" id="etat" name="etat" 
+			value="<?php echo $this->viewData['li_pla']->getetat();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pla']->ValidationMessage("etat");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Date : </td>
+		<td><input type="text" id="date" name="date" 
+			value="<?php echo $this->viewData['li_pla']->getdate();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pla']->ValidationMessage("date");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Heure : </td>
+		<td><input type="text" id="heure" name="heure" 
+			value="<?php echo $this->viewData['li_pla']->getheure();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pla']->ValidationMessage("heure");
+			?></span>
+		</td>
+	</tr>
+
+	<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Li_pla">Retour</a>

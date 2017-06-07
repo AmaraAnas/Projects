@@ -1,0 +1,62 @@
+﻿<?php
+//for total count data :
+
+$limit = 3;
+$total_records =  sizeof($this->viewData['listAdmin']);
+$total_pages = ceil($total_records / $limit);
+
+
+///for first time load data
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $limit;
+//echo "----------".$_GET["page"];
+?>
+<h1>Liste des Admins</h1>
+<table>
+	<tr>
+		<th>ID</th><th>Login</th><th>Modifier Mot de passe</th>
+		<th>Supprimer Compte</th>
+	</tr>
+	<?php
+		//On récupére la liste a partir de viewData
+		foreach(array_slice($this->viewData['listAdmin'],$start_from,$limit)  as $admin) :
+
+
+			echo'<tr><td>'.$admin['admin_id'].'</td>
+			        <td>'.$admin['login'].'</td>';
+			if ($admin['admin_id']==$_COOKIE['ID_ADMIN'])
+			{
+				echo  '<td><a href="?controler=Admin&action=modifier&id=
+					'.$admin['admin_id'].'">Modifier</a></td>
+				 <td><a href="?controler=Admin&action=supprimer&id=
+					'.$admin['admin_id'].'">Supprimer</a></td>';
+
+
+			}
+
+		endforeach;
+	?>
+</table>
+<a href="?controler=Admin&action=ajouter">Ajouter un nouveau Admin</a>
+
+<div class="center">
+	<ul class="pagination">
+		<?php if ($_GET["page"]-1>0) : ?>
+			<li><a href='?controler=Admin&page=<?php echo $_GET["page"]-1 ;?>'>«</a></li>
+		<?php endif;?>
+		<?php if(!empty($total_pages)):for($i=1; $i<=$total_pages; $i++):
+			if($i == $_GET["page"]):?>
+				<li><a class="active" href='?controler=Admin&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php else:?>
+				<li><a  href='?controler=Admin&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php endif;?>
+
+
+		<?php endfor;endif;?>
+		<?php if ($_GET["page"]+1<=$total_pages) : ?>
+			<li><a href='?controler=Admin&page=<?php echo $_GET["page"]+1 ;?>'>»</a></li>
+		<?php endif;?>
+	</ul>
+</div>
+
+

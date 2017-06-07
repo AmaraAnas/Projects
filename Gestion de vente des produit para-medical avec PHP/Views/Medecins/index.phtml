@@ -1,0 +1,34 @@
+﻿<h1>Listes des Medecins</h1>
+	<table>
+		<tr>
+			
+			<th >Nom</th>
+			<th >Prénom</th>
+			<th >@mail</th>
+			<th >Mobile 1</th>
+			<th >Mobile 2</th>
+			<th >Fonction</th>
+			<th >Spécialité</th>
+			<th>Modification</th>
+			<th>Suppression</th>
+			</tr><?php 
+
+	foreach($this->viewData["listMedecins"] as $med) :
+	foreach($this->viewData["listSpecialite"] as $cat)
+			{ if($cat["spe_id"] == $med["spe_id"]){ $spe = $cat["spe_name"]  ;}}
+	foreach($this->viewData["listFonction"] as $fonc)
+			{ if($fonc["fonc_id"] == $med["fonc_id"]){ $var = $fonc["fonc_name"]  ;}}
+		echo'<tr>
+			<td id="id" name="id" style="display: none;">'.$med["med_id"].'</td>
+		    <td>'.$med["med_first_name"].'</td>
+			<td>'.$med["med_last_name"].'</td>
+			<td>'.$med["med_email"].'</td>
+			<td>'.$med["med_mobile1"].'</td>
+			<td>'.$med["med_mobile2"].'</td>
+			<td>'.$var.'</td>
+			<td>'.$spe.'</td>
+			<td><a href="?controler=Medecins&action=modifier&id='.$med["med_id"].'">Modifier</a></td>
+	        <td><a href="?controler=Medecins&action=supprimer&id='.$med["med_id"].'">Supprimer</a></td></tr>';
+endforeach; ?>
+</table>
+<a href="?controler=Medecins&action=ajouter">Ajouter un nouveau Medecin</a>

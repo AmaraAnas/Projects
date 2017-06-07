@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<h1>Modifier un produit</h1>
+
+<form id="form1" method="post">
+	<?php
+	$list1 = array();
+	$list2 = array();
+	$list1= $this->viewData['listName'];
+	$list2= $this->viewData['listDesc'];
+	$i = 1;
+
+	foreach ( $this->viewData['listLangues'] as $lang) :
+		?>
+		<FIELDSET><LEGEND align=top><?php echo $lang["libelle"]?>  </LEGEND>
+			Designation :
+			<input type="text" name="lib<?php echo $lang["code"]?>" id="lib<?php echo $lang["code"]?>" value = "<?php echo $list1[$i]?>" />
+			<span id="erreur"><?php echo $this->viewData['produit']->ValidationMessage("nom");?></span>
+			Description :
+			<textarea type="text" id="desc<?php echo $lang["code"]?>" name="desc<?php echo $lang["code"]?>" COLS=40 ROWS=6  ><?php echo $list2[$i]?></TEXTAREA>
+			<span id="erreur"><?php echo $this->viewData['produit']->ValidationMessage("description"); ?></span>
+		</FIELDSET>
+
+		<?php
+
+ $i++;
+	endforeach;
+
+	?>
+
+	<table>
+		<tr>
+			<td><input type="hidden" id="produit_id" name="produit_id" readonly="true"
+					   value="<?php echo $this->viewData['produit']->getProduitId();?>"/>
+			</td>
+		</tr>
+
+			<td>Promotion : </td>
+			<td><input type="text" id="promotion" name="promotion"
+					   value="<?php echo $this->viewData['produit']->getPromotion();?>"/>
+			<span id="erreur">
+			<?php
+			echo $this->viewData['produit']->ValidationMessage("promotion");
+			?></span>
+			</td>
+		</tr>
+		<tr>
+			<td>Categorie : </td>
+			<td>
+				<select id="categorie" name="categorie">
+					<?php
+					foreach($this->viewData['listCategorie'] as $cat)
+					{	$list = explode("#bis#",$cat['libelle']);
+						echo '<option value="'.$cat['categorie_id'].'">
+							'.$list[1].'</option>';}
+					?>
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td>Photo 1 : </td>
+			<td><img src="Views/images/produits/<?php echo $this->viewData['photo1']->getPhoto()?>" alt="Mountain View" style="width:180px;height:200px;"></td>
+
+			<td><input type="file" id="photo1" name="photo1"  </td>
+		</tr>
+		<tr>
+			<td>Photo 2 : </td>
+			<td><img src="Views/images/produits/<?php echo $this->viewData['photo2']->getPhoto()?>" alt="Mountain View" style="width:180px;height:200px;"></td>
+			<td><input type="file" id="photo2" name="photo2" </td>
+		</tr>
+		<tr>
+			<td>Photo 3 : </td>
+			<td><img src="Views/images/produits/<?php echo $this->viewData['photo3']->getPhoto();?>" alt="Mountain View" style="width:180px;height:200px;"></td>
+
+			<td><input type="file" id="photo3" name="photo3" </td>
+		</tr>
+		<tr>
+			<td>Photo 4 : </td>
+			<td><img src="Views/images/produits/<?php echo $this->viewData['photo4']->getPhoto()?>" alt="Mountain View" style="width:180px;height:200px;"></td>
+			<td><input type="file" id="photo4" name="photo4"</td>
+		</tr>
+		<tr>
+			<td>Photo 5 : </td>
+			<td><img src="Views/images/produits/<?php echo $this->viewData['photo5']->getPhoto()?>" alt="Mountain View" style="width:180px;height:200px;"></td>
+			<td><input type="file" id="photo5" name="photo5" </td>
+		</tr>
+
+
+		<td></td><INPUT type="checkbox" id="en_new" name="en_new" value="1"> Nouveauté</td>
+		<td></td><INPUT type="checkbox" id="en_top" name="en_top" value="1"> Top</td>
+		<td></td><INPUT type="checkbox" id="en_vedette" name="en_vedette" value="1"> Vedette</td>
+
+
+
+		<tr><td colspan='2'><input type="submit" value= "  Modifier  " /></td></tr>
+	</table>
+
+
+	</form>

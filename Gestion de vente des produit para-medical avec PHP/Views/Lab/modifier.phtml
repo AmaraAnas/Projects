@@ -1,0 +1,331 @@
+<h1>Modifier un Lab</h1>
+<form id="form1" method="post"><table>	<tr>
+		<td>ID : </td>
+		<td><input readonly type="text" id="lab_id" name="lab_id" 
+			value="<?php echo $this->viewData['lab']->getlab_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Libele : </td>
+		<td><input   type="text" id="lab_name" name="lab_name" 
+			value="<?php echo $this->viewData['lab']->getlab_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Nom : </td>
+		<td><input   type="text" id="lab_first_name" name="lab_first_name" 
+			value="<?php echo $this->viewData['lab']->getlab_first_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_first_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Prénom : </td>
+		<td><input   type="text" id="lab_last_name" name="lab_last_name" 
+			value="<?php echo $this->viewData['lab']->getlab_last_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_last_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Email : </td>
+		<td><input   type="text" id="lab_email" name="lab_email" 
+			value="<?php echo $this->viewData['lab']->getlab_email();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_email");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Tel : </td>
+		<td><input   type="text" id="lab_phone" name="lab_phone" 
+			value="<?php echo $this->viewData['lab']->getlab_phone();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_phone");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Fax : </td>
+		<td><input   type="text" id="lab_fax" name="lab_fax" 
+			value="<?php echo $this->viewData['lab']->getlab_fax();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_fax");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>GSM : </td>
+		<td><input   type="text" id="lab_mobile" name="lab_mobile" 
+			value="<?php echo $this->viewData['lab']->getlab_mobile();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_mobile");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Adresse : </td>
+		<td><input   type="text" id="lab_address1" name="lab_address1" 
+			value="<?php echo $this->viewData['lab']->getlab_address1();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_address1");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Code postale : </td>
+		<td><input   type="text" id="lab_zip" name="lab_zip" 
+			value="<?php echo $this->viewData['lab']->getlab_zip();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_zip");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Municipalie : </td>
+		<td><input   type="text" id="mun_id" name="mun_id" 
+			value="<?php echo $this->viewData['lab']->getmun_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("mun_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Logo : </td>
+		<td><input   type="text" id="logo" name="logo" 
+			value="<?php echo $this->viewData['lab']->getlogo();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("logo");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>ID : </td>
+		<td><input   type="text" id="lab_id" name="lab_id" 
+			value="<?php echo $this->viewData['lab']->getlab_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Libele : </td>
+		<td><input   type="text" id="lab_name" name="lab_name" 
+			value="<?php echo $this->viewData['lab']->getlab_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Nom : </td>
+		<td><input   type="text" id="lab_first_name" name="lab_first_name" 
+			value="<?php echo $this->viewData['lab']->getlab_first_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_first_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Prénom : </td>
+		<td><input   type="text" id="lab_last_name" name="lab_last_name" 
+			value="<?php echo $this->viewData['lab']->getlab_last_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_last_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Email : </td>
+		<td><input   type="text" id="lab_email" name="lab_email" 
+			value="<?php echo $this->viewData['lab']->getlab_email();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_email");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Tel : </td>
+		<td><input   type="text" id="lab_phone" name="lab_phone" 
+			value="<?php echo $this->viewData['lab']->getlab_phone();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_phone");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Fax : </td>
+		<td><input   type="text" id="lab_fax" name="lab_fax" 
+			value="<?php echo $this->viewData['lab']->getlab_fax();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_fax");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>GSM : </td>
+		<td><input   type="text" id="lab_mobile" name="lab_mobile" 
+			value="<?php echo $this->viewData['lab']->getlab_mobile();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_mobile");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Adresse : </td>
+		<td><input   type="text" id="lab_address1" name="lab_address1" 
+			value="<?php echo $this->viewData['lab']->getlab_address1();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_address1");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Code postale : </td>
+		<td><input   type="text" id="lab_zip" name="lab_zip" 
+			value="<?php echo $this->viewData['lab']->getlab_zip();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_zip");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Municipalie : </td>
+		<td><input   type="text" id="mun_id" name="mun_id" 
+			value="<?php echo $this->viewData['lab']->getmun_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("mun_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Logo : </td>
+		<td><input   type="text" id="logo" name="logo" 
+			value="<?php echo $this->viewData['lab']->getlogo();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("logo");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>ID : </td>
+		<td><input   type="text" id="lab_id" name="lab_id" 
+			value="<?php echo $this->viewData['lab']->getlab_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Libele : </td>
+		<td><input   type="text" id="lab_name" name="lab_name" 
+			value="<?php echo $this->viewData['lab']->getlab_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Nom : </td>
+		<td><input   type="text" id="lab_first_name" name="lab_first_name" 
+			value="<?php echo $this->viewData['lab']->getlab_first_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_first_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Prénom : </td>
+		<td><input   type="text" id="lab_last_name" name="lab_last_name" 
+			value="<?php echo $this->viewData['lab']->getlab_last_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_last_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Email : </td>
+		<td><input   type="text" id="lab_email" name="lab_email" 
+			value="<?php echo $this->viewData['lab']->getlab_email();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_email");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Tel : </td>
+		<td><input   type="text" id="lab_phone" name="lab_phone" 
+			value="<?php echo $this->viewData['lab']->getlab_phone();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_phone");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Fax : </td>
+		<td><input   type="text" id="lab_fax" name="lab_fax" 
+			value="<?php echo $this->viewData['lab']->getlab_fax();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_fax");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>GSM : </td>
+		<td><input   type="text" id="lab_mobile" name="lab_mobile" 
+			value="<?php echo $this->viewData['lab']->getlab_mobile();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_mobile");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Adresse : </td>
+		<td><input   type="text" id="lab_address1" name="lab_address1" 
+			value="<?php echo $this->viewData['lab']->getlab_address1();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_address1");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Code postale : </td>
+		<td><input   type="text" id="lab_zip" name="lab_zip" 
+			value="<?php echo $this->viewData['lab']->getlab_zip();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("lab_zip");
+			?></span>
+		</td>
+	</tr>
+			<tr>
+				<td>Municipalie : </td>
+				<td>
+					<select id="mun_id" name="mun_id">
+					<?php 
+ 					foreach($this->viewData["listMunicipalite"] as $cat){ 
+							if($cat["mun_id"] == $this->viewData['lab']->getmun_id()){
+ 							echo '<option value="'.$cat["mun_id"]. '" selected>'.$cat['mun_name'].'</option>'; 
+							}else{
+ 							echo '<option value="'.$cat["mun_id"]. '">'.$cat['mun_name'].'</option>'; }}
+					?> </select></td></tr> 
+	<tr>
+		<td>Logo : </td>
+		<td><input readonly type="text" id="logo" name="logo" 
+			value="<?php echo $this->viewData['lab']->getlogo();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['lab']->ValidationMessage("logo");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Modifier" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Lab">Retour</a>

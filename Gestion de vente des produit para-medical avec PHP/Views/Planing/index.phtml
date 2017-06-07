@@ -1,0 +1,39 @@
+<?php if ($_COOKIE["type"] == 2) 
+	$this->RederictAction("pagevide");
+
+
+//echo '<pre>';print_r($this->viewData['listusers'] );
+
+
+        ?>
+<h1>Listes de Planing</h1>
+<table>
+	<tr>
+		<th>Zone<th>
+		<th>Delegué<th>
+		<th>Observation<th>
+		<th>Etat<th>
+		<th>Modification</th>
+	    <th>Suppression</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listPlaning"] as $planing):
+	
+	foreach($this->viewData["listZone"] as $zone)
+			{ if($zone["zone_id"] == $planing["zone_id"]){ $var = $zone["zone_name"]  ;}}
+	foreach($this->viewData["listusers"] as $user)
+			{ if($user["ID_Utilisateur"] == $planing["empl_id"]){ $spe = $user["Nom_Propre"]  ;}}
+	
+		echo '<tr>	
+	<td>'.$var.'<td>
+
+	<td>'.$planing["observation"].'<td>
+	<td>'.$planing["etat"].'<td>
+		<td><a href="?controler=Planing&action=modifier&id='.$planing['planing_id'].'">Modifier</a></td>
+		<td><a href="?controler=Planing&action=supprimer&id='.$planing['planing_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Planing&action=ajouter">Ajouter un nouveau produit</a>

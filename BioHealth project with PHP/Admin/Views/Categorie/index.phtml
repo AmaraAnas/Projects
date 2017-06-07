@@ -1,0 +1,71 @@
+﻿<?php
+//for total count data :
+
+$limit = 3;
+$total_records =  sizeof($this->viewData['listCategorie']);
+$total_pages = ceil($total_records / $limit);
+
+
+///for first time load data
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $limit;
+//echo "----------".$_GET["page"];
+?>
+
+<h1>Liste des Categories</h1>
+<table>
+	<tr>
+		<th>ID</th><th>Libelle</th>
+		<th>ID parent</th><th>Modification</th>
+		<th>Suppression</th>
+	</tr>
+	<?php
+		//On récupére la liste a partir de viewData
+		foreach(array_slice($this->viewData['listCategorie'],$start_from,$limit) as $categorie) :
+
+			$list1 = explode("#bis#", $categorie['libelle']);
+
+			echo'<tr><td>'.$categorie['categorie_id'].'</td>
+			        <td>'.$list1[1].'</td>';
+				if($categorie['id_parent'] ==0)
+						echo '<td>----</td>';
+				else {
+					 foreach ($this->viewData['listCategorie'] as $cate) :
+						 if ($categorie['id_parent'] == $cate['categorie_id'])
+						 { $list2 = explode("#bis#",$cate['libelle']);
+							 echo ' <td>' . $list2[1] . '</td>';}
+					 endforeach;
+
+				}
+				echo  '<td><a href="?controler=Categorie&action=modifier&id=
+					'.$categorie['categorie_id'].'">Modifier</a></td>
+				 <td><a href="?controler=Categorie&action=supprimer&id=
+					'.$categorie['categorie_id'].'">Supprimer</a></td>'
+
+				 ;
+		endforeach;
+	?>
+</table>
+<a href="?controler=Categorie&action=ajouter">Ajouter un nouveau categorie</a>
+
+
+
+ <div class="center">
+   <ul class="pagination">
+	   <?php if ($_GET["page"]-1>0) : ?>
+	   <li><a href='?controler=Categorie&page=<?php echo $_GET["page"]-1 ;?>'>«</a></li>
+	   <?php endif;?>
+		<?php if(!empty($total_pages)):for($i=1; $i<=$total_pages; $i++):
+			if($i == $_GET["page"]):?>
+				<li><a class="active" href='?controler=Categorie&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php else:?>
+				<li><a  href='?controler=Categorie&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+			<?php endif;?>
+
+
+		<?php endfor;endif;?>
+	   <?php if ($_GET["page"]+1<=$total_pages) : ?>
+	   <li><a href='?controler=Categorie&page=<?php echo $_GET["page"]+1 ;?>'>»</a></li>
+	   <?php endif;?>
+	</ul>
+ </div>

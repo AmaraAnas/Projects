@@ -1,0 +1,32 @@
+<h1>Listes de Li_med</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Zone<th>
+		<th>Medecin<th>
+		<th>Tel<th>
+		<th>Adresse<th>
+		<th>City<th>
+		<th>Code postale<th>
+		<th>Municipalité<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listLi_med"] as $li_med):
+		echo '<tr>	<td>'.$li_med["li_id"].'<td>
+	<td>'.$li_med["zone_id"].'<td>
+	<td>'.$li_med["med_id"].'<td>
+	<td>'.$li_med["med_phone"].'<td>
+	<td>'.$li_med["med_address"].'<td>
+	<td>'.$li_med["med_city"].'<td>
+	<td>'.$li_med["med_zip"].'<td>
+	<td>'.$li_med["mun_id"].'<td>
+		<td><a href="?controler=Li_med&action=modifier&id='.$li_med['li_id'].'">Modifier</a></td>
+		<td><a href="?controler=Li_med&action=supprimer&id='.$li_med['li_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Li_med&action=ajouter">Ajouter un nouveau produit</a>

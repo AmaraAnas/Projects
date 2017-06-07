@@ -1,0 +1,35 @@
+﻿<h1>Listes des Lmed</h1>
+	<table>
+		<tr>
+			<th >Nom de Medecin</th>
+			<th >Prénom de Medecin</th>
+			<th >Municipalilé</th>
+			<th >Zone</th>
+			<th >Mobile</th>
+			<th >Adresse</th>
+			<th >Zip</th>
+			<th>Modification</th>
+			<th>Suppression</th>
+			</tr><?php 
+
+	foreach($this->viewData["listLmed"] as $li_med) :
+	
+ foreach($this->viewData["listMedecins"] as $cat)
+			{ if($cat["med_id"] == $li_med["med_id"]){ $med = $cat["med_first_name"] ; $med2 = $cat["med_last_name"] ;}}
+	foreach($this->viewData["listZone"] as $fonc)
+			{ if($fonc["zone_id"] == $li_med["zone_id"]){ $var = $fonc["zone_name"]  ;}}
+		echo'<tr>
+			<td id="id" name="id" style="display: none;">'.$li_med["li_id"].'</td>
+	         
+			<td>'.$med.'</td>
+			<td>'.$med2.'</td>
+			<td>'.$li_med["med_city"].'</td>
+			<td>'.$var.'</td>
+			<td>'.$li_med["med_phone"].'</td>
+			<td>'.$li_med["med_address"].'</td>
+			<td>'.$li_med["med_zip"].'</td>
+			<td><a href="?controler=Lmed&action=modifier&id='.$li_med["li_id"].'">Modifier</a></td>
+	        <td><a href="?controler=Lmed&action=supprimer&id='.$li_med["li_id"].'">Supprimer</a></td></tr>';
+endforeach; ?>
+</table>
+<a href="?controler=Lmed&action=ajouter">Ajouter un nouveau li_med</a>

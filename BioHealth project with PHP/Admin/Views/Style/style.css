@@ -1,0 +1,138 @@
+﻿/********************************************
+   AUTHOR:  	Rachid
+ *******************************************/ 
+
+body {
+	width: 970px;
+	padding-top:10px;
+	margin-bottom:0px;
+	font: normal 15 Calibri;
+	color: #555;
+	margin:auto;/* Pour centrer notre page */
+	background: #faf4ff;
+}
+
+/* start - table */
+table {
+	border-collapse: collapse;
+	margin: 15px;	
+	border: solid 2px #FFF;
+}
+th strong {
+	color: #fff;
+}
+th {
+	background: #2a2569;
+	height: 29px;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #FFF;
+	text-align: left;
+	border-left: 1px solid #faf4ff;
+	border-bottom: solid 2px #FFF;
+}
+tr {
+	height: 30px;
+}
+td {
+	padding-left: 11px;
+	padding-right: 11px;
+	border-left: 1px solid #E8E8E8;
+	border-bottom: 1px solid #DFDFDF;
+}
+td.first,th.first {
+	border-left: 0px;
+}
+tr.row-a {
+	background: #F8F8F8;
+}
+tr.row-b {
+	background: #EFEFEF;		
+}
+/* end - table */
+
+form {
+	margin:10px 15px; padding: 0;
+	border: 1px solid #f2f2f2; 
+	background-color: #FAFAFA; 
+}
+/***********************
+	  LAYOUT
+************************/
+
+#header, #content, #footer {
+	width: 970px;
+}
+/* header */
+#header {
+	padding:5px;
+	height: 100px;
+	color: #2a2569;
+	font: normal 19 Calibri;
+	text-align: left;	
+}
+/* content */
+#content{
+	clear: both;
+	float: left;
+	width: 100%;
+}
+/* Menu  */
+#menu {
+	float: left;
+	width: 23%;
+	padding-left:5px;
+	padding-right:5px;
+}	
+/* main */
+#main {
+	float: right;
+	width: 73%;
+	margin: 0 0 10px 0; padding: 0;	
+}
+#erreur{
+	color: #ff1919;
+}
+
+/* footer */
+#footer {
+	text-align: center;
+}
+ul.pagination {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+}
+
+ul.pagination li a.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
+div.center {text-align: center;}
+
+
+
+
+
+
+
+
+
+
+
+

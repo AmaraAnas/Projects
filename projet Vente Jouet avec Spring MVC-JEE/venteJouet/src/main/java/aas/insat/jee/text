@@ -1,0 +1,26 @@
+
+
+
+<s:http>
+<s:intercept-url pattern="/adminJouet/**" access="ROLE_ADMIN_JOUET"/>
+<s:intercept-url pattern="/adminCat/**" access="ROLE_ADMIN_CAT"/>
+<s:form-login login-page="/login" default-target-url="/adminJouet/index" authentication-failure-url="/login" />
+<s:logout logout-success-url="/login" />
+</s:http>
+<s:authentication-manager>
+<s:authentication-provider>
+<s:password-encoder hash="md5"></s:password-encoder>
+<s:jdbc-user-service data-source-ref="datasource"
+users-by-username-query="select user_name,password, actived
+from users where user_name=?"
+authorities-by-username-query="select u.user_name, r.roleName from users u, role r
+where u.user_id = r.user_id and u.user_name =? " />
+<!--
+<s:user-service>
+<s:user name="admin1" password="admin1" authorities="ROLE_ADMIN_PROD"/>
+<s:user name="admin2" authorities="ROLE_ADMIN_CAT,ROLE_ADMIN_JOUET" password="admin2" />
+</s:user-service>
+-->
+</s:authentication-provider>
+</s:authentication-manager>
+

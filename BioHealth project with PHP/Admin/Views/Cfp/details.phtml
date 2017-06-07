@@ -1,0 +1,63 @@
+<h1>Details Commande</h1>
+<FIELDSET><LEGEND align=top>La commande :  </LEGEND>
+	<table>
+		<tr>
+			<td> N° Commande : </td>
+			<td>  <?php echo $this->viewData['commande']->getNumCom() ;?> </td>
+		</tr>
+		<tr>
+			<td> Date de Commande : </td>
+			<td><?php echo $this->viewData['commande']->getDateCommande() ; ?> </td>
+		</tr>
+		<tr>
+			<td> Client : </td>
+			<?php foreach ($this->viewData['listClient'] as $cl) :
+
+				if ($this->viewData['commande']->getClientId() ==$cl['client_id'])
+				{echo '<td>'.$cl['first_name']." ".$cl['last_name'].'</td>';}
+
+				endforeach
+			?>
+		</tr>
+		<tr>
+			<td> Total : </td>
+			<td> <?php echo $this->viewData['commande']->getTotal() ?>  </td>
+		</tr>
+
+
+			<?php	if ($this->viewData['commande']->getNumFact() != "")
+			{ echo '<tr>
+			<td> N° Facture : </td>
+			<td>'.$this->viewData['commande']->getNumFact().'</td>
+			</tr>
+			<tr>
+			<td> Date de Facture : </td>
+			<td>'.$this->viewData['commande']->getDateFact().'</td>
+			</tr>'; }?>
+	</table>
+</FIELDSET>
+
+<FIELDSET><LEGEND align=top>Les Details :  </LEGEND>
+	<table>
+		<tr>
+			<th>Produit</th><th>Prix</th><th>Quantite</th>
+		</tr>
+		<?php
+		//On récupére la liste a partir de viewData
+		foreach($this->viewData['detailsComm'] as $det) :
+
+			foreach ($this->viewData['listProduit'] as $item) :
+				if ($det['produit_id']==$item['produit_id'])
+			{   $list1 = explode("#bis#", $item['nom']);
+			     	echo '<td>'.$list1[1].'</td>';
+			}
+			endforeach;
+
+				echo '<td>'.$det['prix_unitaire'].'</td>
+			    <td>'.$det['quantite'].'</td>';
+
+		endforeach;
+		?>
+
+	</table>
+</FIELDSET>

@@ -1,0 +1,58 @@
+﻿<h1>Supprimer un produit</h1>
+Avertissement : La suppression de ce produit entraine automatiquement la suppression de ses photos et tous ses details !!!
+<form id="form1" method="post">
+	<table>
+		<tr>
+			<td><input type="hidden" id="produit_id" name="produit_id" readonly="true"
+					   value="<?php echo $this->viewData['produit']->getProduitId();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Nom : </td>
+			<?php   $current_name= $this->viewData['produit']->getNom();
+			$name = explode("#bis#",$current_name);         ?>
+			<td>
+				<input type="text" id="nom" name="nom" readonly="true"
+					   value="<?php echo $name[1] ;?>"/>
+			</td>
+
+		<tr>
+			<td>Quantité : </td>
+			<td><input type="text" id="quantite_stock" name="quantite_stock" readonly="true"
+					   value="<?php echo $this->viewData['produit']->getQuantiteStock();?>"/>
+			</td>
+		<tr>
+			<td>Description : </td>
+			<?php   $current_desc= $this->viewData['produit']->getDescription();
+			$desc = explode("#bis#",$current_desc);         ?>
+			<td><input type="text" id="description" name="description" readonly="true"
+					   value="<?php echo $desc[1];?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Promotion : </td>
+			<td><input type="text" id="promotion" name="promotion" readonly="true"
+					   value="<?php echo $this->viewData['produit']->getPromotion();?>"/>
+			</td>
+		</tr>
+		<tr>
+			<td>Categorie : </td>
+			<td>
+				<select id="categorie" name="categorie" readonly="true">
+					<?php
+				foreach($this->viewData['listCategorie'] as $cat)
+				{	$list = explode("#bis#",$cat['libelle']);
+					echo '<option value="'.$cat['categorie_id'].'">
+							'.$list[1].'</option>';}
+				?>
+				</select>
+			</td>
+		</tr>
+		<tr><td colspan='2'><input type="submit" value= "  Supprimer  " /></td></tr>
+	</table>
+</form>
+
+
+
+
+

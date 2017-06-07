@@ -1,0 +1,31 @@
+<h1>Listes de Li_pla</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Medecin<th>
+		<th>Produit<th>
+		<th>Observation<th>
+		<th>Etat<th>
+		<th>Date<th>
+		<th>Heure<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listLi_pla"] as $li_pla):
+		echo '<tr>	<td>'.$li_pla["li_id"].'<td>
+	<td>'.$li_pla["planing_id"].'<td>
+	<td>'.$li_pla["med_id"].'<td>
+	<td>'.$li_pla["pro_id"].'<td>
+	<td>'.$li_pla["observation"].'<td>
+	<td>'.$li_pla["etat"].'<td>
+	<td>'.$li_pla["date"].'<td>
+	<td>'.$li_pla["heure"].'<td>
+		<td><a href="?controler=Li_pla&action=modifier&id='.$li_pla['li_id'].'">Modifier</a></td>
+		<td><a href="?controler=Li_pla&action=supprimer&id='.$li_pla['li_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Li_pla&action=ajouter">Ajouter un nouveau produit</a>

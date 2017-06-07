@@ -1,0 +1,15 @@
+PARSER ERROR
+------------
+Could not close nest at line 75 inside questions.agc.
+
+PROGRAM TRACE
+-------------
+
+
+ERROR TRACE
+-----------
+Failed to 'pJumpBlockA->DoBlock'
+Failed to 'DoStatement(TokenID)'
+Failed to 'DoBlock(0)'
+Failed to 'MakeStatements'
+Failed to Parse Program (MakeDBM->MakeProgram)'

@@ -1,0 +1,109 @@
+<h1>Ajouter un nouveau Li_pro_emp_zone</h1><form id="form1" method="post">		<table>	<tr>
+		<td>Zone : </td>
+		<td><input type="text" id="zone_id" name="zone_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getzone_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("zone_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Delegue : </td>
+		<td><input type="text" id="empl_id" name="empl_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getempl_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("empl_id");
+			?></span>
+		</td>
+	</tr>
+			<tr>
+				<td>Produit : </td>
+				<td>
+					<select id="pro_id" name="pro_id">
+					<?php 
+ 					foreach($this->viewData["listProduits"] as $cat){ 
+							if($cat["pro_id"] == $this->viewData['li_pro_emp_zone']->getpro_id()){
+ 							echo '<option value="'.$cat["pro_id"]. '" selected>'.$cat['pro_name'].'</option>'; 
+							}else{
+ 							echo '<option value="'.$cat["pro_id"]. '">'.$cat['pro_name'].'</option>'; }}
+					?> </select></td></tr> 
+	<tr>
+		<td>ID : </td>
+		<td><input type="text" id="li_id" name="li_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getli_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("li_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Zone : </td>
+		<td><input type="text" id="zone_id" name="zone_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getzone_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("zone_id");
+			?></span>
+		</td>
+	</tr>
+			<tr>
+				<td>Delegue : </td>
+				<td>
+					<select id="empl_id" name="empl_id">
+					<?php 
+ 					foreach($this->viewData["listEmployer"] as $cat){ 
+							if($cat["empl_id"] == $this->viewData['li_pro_emp_zone']->getempl_id()){
+ 							echo '<option value="'.$cat["empl_id"]. '" selected>'.$cat['empl_id'].'</option>'; 
+							}else{
+ 							echo '<option value="'.$cat["empl_id"]. '">'.$cat['empl_id'].'</option>'; }}
+					?> </select></td></tr> 
+	<tr>
+		<td>Produit : </td>
+		<td><input type="text" id="pro_id" name="pro_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getpro_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("pro_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>ID : </td>
+		<td><input type="text" id="li_id" name="li_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getli_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("li_id");
+			?></span>
+		</td>
+	</tr>
+			<tr>
+				<td>Zone : </td>
+				<td>
+					<select id="zone_id" name="zone_id">
+					<?php 
+ 					foreach($this->viewData["listZone"] as $cat){ 
+							if($cat["zone_id"] == $this->viewData['li_pro_emp_zone']->getzone_id()){
+ 							echo '<option value="'.$cat["zone_id"]. '" selected>'.$cat['zone_name'].'</option>'; 
+							}else{
+ 							echo '<option value="'.$cat["zone_id"]. '">'.$cat['zone_name'].'</option>'; }}
+					?> </select></td></tr> 
+	<tr>
+		<td>Delegue : </td>
+		<td><input type="text" id="empl_id" name="empl_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getempl_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("empl_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Produit : </td>
+		<td><input type="text" id="pro_id" name="pro_id" 
+			value="<?php echo $this->viewData['li_pro_emp_zone']->getpro_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['li_pro_emp_zone']->ValidationMessage("pro_id");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Li_pro_emp_zone">Retour</a>

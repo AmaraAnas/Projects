@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Calendrier de réservation</title>
+</head>
+<body>
+<h1>Calendrier de réservations de chambres d'hôtes en PHP/MySQL</h1>
+
+<p>A voir en fonctionnement sur <a href="http://www.jourdets.com/reservations/calendrier/calendrier.php"> mon site de chambres d'hôtes</a></p>
+
+<h3>A paramétrer :</h3>
+<ul>
+<li>calendrier/rconfig.php : nombre et noms des chambres + couleur</li>
+<li>calendrier/config.inc.php : vos paramètres de base de données SQL</li>
+<li>calendrier/demande.php : pour gérer une demande d'un client ( mail ... )</li>
+</ul>
+
+<h3>Fonctionnement :</h3>
+<p>La page de lancement est calendrier.php</p>
+<p>elle peut fonctionner en français,anglais et espagnol ( calendrier.php?lang=xx avec xx = fr,en ou es )</p>
+
+<p>Au niveau utilisateur , on clique sur le 1er jour de la réservation sur la chambre demandée et on va vers demande.php avec arguments POST</p>
+<p>Au niveau administrateur ( après un clic sur le symbole d'édition / stylo ) on est dans protected/calendar_mod.php<br/>
+On clique sur le 1er jour de la réservation sur la chambre voulue et on a accès à un formulaire pour renseigner les infos de réservations<br/>
+Si le jour était réservé ( 1er jour d'une réservation ) on peut la modifier ou la détruire, sinon on remplit ls infos et on crée un nouvel enregistrement de resa.<br/>
+La création de périodes de fermetures se fait en cliquant sur le cadenas près du nom du mois dans cette partie administrateur ( calendar_mod.php )<br/>
+Il est possible de lier chaque chambre à un calendrier google calendar et de refléter les réservations dans ces calendriers<br/>
+Pour ceci mettre <b>$synchro_gdata</b> à true dans rconfig.php et paramétrer vore compte google et calendriers dans protected/gdata.php</p>
+
+
+<h3>Base de données ( voir sql.txt ) </h3>
+<h4>table calendrier</h4>
+<ul>
+<li>jour : date : 1er jour de la réservation</li>
+<li>nch : int : un mask pour la ( les ) chambres concernées ( 0000001 : ch 1 ; 000002 : ch 2 ; 000004 ... etc )</li>
+<li>njours : int : nbre de jours réservés</li>
+<li>infos : text : infos sur la resa , nom ....</li>
+<li>gurl : text : url de modif de l'événement google calendar s'il existe</li>
+</ul>
+
+<h4>table fermetures</h4>
+<ul>
+<li>nch : int : un mask pour la ( les ) chambres concernées ( 0000001 : ch 1 ; 000002 : ch 2 ; 000004 ... etc )</li>
+<li>ffrom : date : fermé du ...</li>
+<li>fto : date : au ..</li>
+</ul>
+
+<h3>Remarques annexes</h3>
+
+<p>Limitations : pour réserver 2 chambres sur une même période, il faut faire deux réservations, même si la BD acceptera un mélange ( nch = 3 signifie "chambres 1 ET 2" )</p>
+<p>Le répertoire protected/ est à protéger absolument avec un .htaccess/.htpasswd pour réserver la modification de BD à l'administrateur.</p>
+<p>Pour toute demande vous pouvez me consulter <a href="mailto:oallais@free.fr">par mail</a> et si vous décidez d'utiliser ce code et que vous le pouvez merci de faire unlien vers une des pages du domaine <a href="http://www.jourdets.com">www.jourdets.com</a></p>
+<p>La dernière version nécessite jQuery ( inclus dans l'archive )</p>
+<p>Le CSS est minimaliste et est bien sûr à adapter à vos besoins</p>
+<h3>Changements</h3>
+<ul>
+<li>Modifs pour réserver plusieurs chambres en une seule fois</li>
+<li>Correction de bugs et compatibilité php 5.3</li>
+</ul>
+Olivier ALLAIS 
+</body>
+</html>

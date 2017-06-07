@@ -1,0 +1,26 @@
+﻿--
+-- Structure de la table `calendrier`
+--
+
+CREATE TABLE IF NOT EXISTS `calendrier` (
+  `jour` date DEFAULT NULL,
+  `njours` int(1) NOT NULL DEFAULT '1',
+  `nch` int(1) NOT NULL DEFAULT '1',
+  `num` int(1) NOT NULL AUTO_INCREMENT,
+  `infos` text CHARACTER SET utf8 NOT NULL,
+  `gurl` text CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=381 ;
+
+
+--
+-- Structure de la table `fermetures`
+--
+
+CREATE TABLE IF NOT EXISTS `fermetures` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `ffrom` date NOT NULL,
+  `fto` date NOT NULL,
+  `nch` int(1) NOT NULL DEFAULT '255',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;

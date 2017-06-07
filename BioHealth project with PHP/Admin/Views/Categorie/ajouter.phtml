@@ -1,0 +1,45 @@
+<h1>Ajouter un nouveau Categorie</h1>
+<form id="form1" method="post">
+	<?php
+
+	foreach ( $this->viewData['listLangues'] as $lang) :
+		?>
+		<FIELDSET><LEGEND align=top><?php echo $lang["libelle"]?>  </LEGEND>
+			Libele :
+			<input type="text" name="cat<?php echo $lang["code"]?>" id="cat<?php echo $lang["code"]?>"/>
+			<span id="erreur"><?php echo $this->viewData['categorie']->ValidationMessage("libelle");?></span>
+		</FIELDSET>
+
+		<?php
+
+
+	endforeach;
+
+	?>
+	<table>
+	<tr>
+		<td>Categorie Parent : </td>
+		<td>
+			<select id="id_parent" name="id_parent">
+				echo '<option value="0">
+					----</option>'
+				<?php
+				foreach($this->viewData['listCategorie'] as $cat){
+
+					$list = explode("#bis#",$cat['libelle']);
+					echo '<option value="'.$cat['categorie_id'].'">
+							'.$list[1].'</option>';
+
+				}
+
+				?>
+			</select>
+
+		</td>
+	</tr>
+	<!--			<tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>  -->
+			</table>
+			<input type="submit" value="Ajouter" />
+		</form>
+	<a href="?controler=Categorie&page=1">Retour</a>
+<?php echo $this->viewData['erreur']; ?>

@@ -1,0 +1,79 @@
+<h1>Supprimer un Med</h1>
+<form id="form1" method="post"><table>	<tr>
+		<td>ID : </td>
+		<td><input readonly type="text" id="med_id" name="med_id" 
+			value="<?php echo $this->viewData['med']->getmed_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("med_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Nom : </td>
+		<td><input readonly type="text" id="med_first_name" name="med_first_name" 
+			value="<?php echo $this->viewData['med']->getmed_first_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("med_first_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Prénom : </td>
+		<td><input readonly type="text" id="med_last_name" name="med_last_name" 
+			value="<?php echo $this->viewData['med']->getmed_last_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("med_last_name");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Email : </td>
+		<td><input readonly type="text" id="med_email" name="med_email" 
+			value="<?php echo $this->viewData['med']->getmed_email();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("med_email");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>GSM 1 : </td>
+		<td><input readonly type="text" id="med_mobile1" name="med_mobile1" 
+			value="<?php echo $this->viewData['med']->getmed_mobile1();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("med_mobile1");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>GSM 2 : </td>
+		<td><input readonly type="text" id="med_mobile2" name="med_mobile2" 
+			value="<?php echo $this->viewData['med']->getmed_mobile2();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("med_mobile2");
+			?></span>
+		</td>
+	</tr>
+			<tr>
+				<td>Fonction : </td>
+				<td>
+					<select id="fonc_id" name="fonc_id">
+					<?php 
+ 					foreach($this->viewData["listFonction"] as $cat){ 
+							if($cat["fonc_id"] == $this->viewData['med']->getfonc_id()){
+ 							echo '<option value="'.$cat["fonc_id"]. '" selected>'.$cat['fonc_name'].'</option>'; 
+							}else{
+ 							echo '<option value="'.$cat["fonc_id"]. '">'.$cat['fonc_name'].'</option>'; }}
+					?> </select></td></tr> 
+	<tr>
+		<td>Spécialité : </td>
+		<td><input readonly type="text" id="spe_id" name="spe_id" 
+			value="<?php echo $this->viewData['med']->getspe_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['med']->ValidationMessage("spe_id");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Med">Retour</a>

@@ -1,0 +1,20 @@
+<h1>Listes de Specialite</h1>
+<table>
+	<tr>
+		<th>ID<th>
+		<th>Libele<th>
+		<th>Suppression</th>
+		<th>Modification</th>
+	</tr>
+	<?php
+	//On récupére la liste a partir de viewData
+	foreach($this->viewData["listSpecialite"] as $specialite):
+		echo '<tr>	<td>'.$specialite["spe_id"].'<td>
+	<td>'.$specialite["spe_name"].'<td>
+		<td><a href="?controler=Specialite&action=modifier&id='.$specialite['spe_id'].'">Modifier</a></td>
+		<td><a href="?controler=Specialite&action=supprimer&id='.$specialite['spe_id'].'">Supprimer</a></td>
+</tr>';
+	endforeach;
+	?>
+</table>
+<a href="?controler=Specialite&action=ajouter">Ajouter un nouveau produit</a>

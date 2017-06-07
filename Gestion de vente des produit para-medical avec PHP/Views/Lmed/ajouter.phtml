@@ -1,0 +1,63 @@
+﻿<h1>Ajouter un nouveau Lmed</h1>
+
+<form id="form1" method="post"><table><tr><td>Medecin :</td><td>
+<select id="med_id" name="med_id"><?php 
+ 
+ foreach($this->viewData["listMedecins"] as $cat){ if($cat["med_id"] == $this->viewData["Lmed"]->getmed_id()){ echo '<option value="'.$cat["med_id"]. '" selected>'.$cat['med_first_name'].'</option>'; }else{ echo '<option value="'.$cat["med_id"]. '">'.$cat['med_first_name'].'</option>'; }}?> </select></td></tr> 
+
+ 
+ 
+<</select></td></tr> <tr><td>Gouvernorat :<td><select id="Gouvernorat" name="Gouvernorat"><?php 
+foreach($this->viewData["listGouvernorat"] as $cat)
+ { if($cat["gov_id"] == $this->viewData["Lmed"]->getmed_city())
+     { echo '<option value="'.$cat["gov_id"]. '" selected>'.$cat['gov_name'].'</option>'; }
+        else{ echo '<option value="'.$cat["gov_id"]. '">'.$cat['gov_name'].'</option>'; }}  ?></tr>
+	
+	
+</select></td></tr> <tr><td>Zone :</td><td><select id="zone_id" name="zone_id"><?php
+foreach($this->viewData["listZone"] as $cat){
+	if($cat["zone_pid"]==0 /*&&  $cat["gov_id"]==$this->viewData["Lmed"]->getmed_city()*/){ 
+		if($cat["zone_id"] == $this->viewData["Lmed"]->getzone_id()){ 
+			echo '<option value="'.$cat["zone_id"]. '" selected>'.$cat['zone_name'].'</option>'; 
+		}else{ 
+			echo '<option value="'.$cat["zone_id"]. '">'.$cat['zone_name'].'</option>'; }
+	}
+}
+?>
+	
+	
+<tr>
+		<td>Mobile: </td>
+		<td>
+			<input type="text" id="med_phone" name="med_phone"
+			value="<?php echo $this->viewData["Lmed"]->getmed_phone();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_phone");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>Adresse : </td>
+		<td>
+			<input type="text" id="med_address" name="med_address"
+			value="<?php echo $this->viewData["Lmed"]->getmed_address();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_address");
+			?>
+		</span>
+	</td></tr>
+	
+		<td>Zip : </td>
+		<td>
+			<input type="text" id="med_zip" name="med_zip"
+			value="<?php echo $this->viewData["Lmed"]->getmed_zip();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lmed"]->ValidationMessage("med_zip");
+			?>
+		</span>
+	</td></tr>
+ <tr><td colspan="2"><input type="submit" value="Ajouter" /></td></tr>
+ </table></form>

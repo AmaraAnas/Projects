@@ -1,0 +1,42 @@
+<h1>Modifier un Lplanings</h1>
+<form id="form1" method="post"><table>
+<tr><td>li_id: </td>
+<td><input type="text" id="li_id" name="li_id" readonly="true" 
+value="<?php echo $this->viewData["Lplanings"]->getli_id();?>"/></td></tr><tr><td>planing_id</td><td><select id="planing_id" name="planing_id"><?php 
+ foreach($this->viewData["listPlaning"] as $cat){ if($cat["planing_id"] == $this->viewData["Lplanings"]->getplaning_id()){ echo '<option value="'.$cat["planing_id"]. '" selected>'.$cat['med_id'].'</option>'; }else{ echo '<option value="'.$cat["planing_id"]. '">'.$cat['med_id'].'</option>'; }}?> </select></td></tr> <tr><td>pro_id</td><td><select id="pro_id" name="pro_id"><?php 
+ foreach($this->viewData["listProduits"] as $cat){ if($cat["pro_id"] == $this->viewData["Lplanings"]->getpro_id()){ echo '<option value="'.$cat["pro_id"]. '" selected>'.$cat['pro_name'].'</option>'; }else{ echo '<option value="'.$cat["pro_id"]. '">'.$cat['pro_name'].'</option>'; }}?> </select></td></tr> 
+	<tr>
+		<td>observation : </td>
+		<td>
+			<input type="text" id="observation" name="observation"
+			value="<?php echo $this->viewData["Lplanings"]->getobservation();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lplanings"]->ValidationMessage("observation");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>etat : </td>
+		<td>
+			<input type="text" id="etat" name="etat"
+			value="<?php echo $this->viewData["Lplanings"]->getetat();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lplanings"]->ValidationMessage("etat");
+			?>
+		</span>
+	</td></tr>
+	<tr>
+		<td>date : </td>
+		<td>
+			<input type="text" id="date" name="date"
+			value="<?php echo $this->viewData["Lplanings"]->getdate();?>"/>
+			<span id="erreur">
+			<?php 
+			echo $this->viewData["Lplanings"]->ValidationMessage("date");
+			?>
+		</span>
+	</td></tr>
+ <tr><td colspan="2"><input type="submit" value="Modifier" /></td></tr>
+ </table></form>

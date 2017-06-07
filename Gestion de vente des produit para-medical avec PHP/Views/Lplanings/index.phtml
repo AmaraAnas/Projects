@@ -1,0 +1,32 @@
+<h1>Listes des Lplanings</h1>
+	<table>
+		<tr>
+			
+			<th >planing_id</th>
+			<th >pro_id</th>
+			<th >observation</th>
+			<th >etat</th>
+			<th >date</th>
+			<th>Modification</th>
+			<th>Suppression</th>
+			</tr><?php 
+
+	foreach($this->viewData["listLplanings"] as $li_pla) :
+echo'<tr>
+	<td id="id" name="id" style="display: none;">'.$li_pla["li_id"].'</td>';
+	 if ($_COOKIE["type"]==2 )
+	  {  if ($_COOKIE["ID_UTILISATEUR"] == $li_pla["empl_id"])
+	      { echo '<td>.$li_pla[planing_id].</td>';}
+	  else {echo 'vide';}}
+     else { '<td>.$li_pla[planing_id].</td>' ;}
+  
+  '<td>'.$li_pla[pro_id].'</td>
+  <td>'.$li_pla[observation].'</td>
+  <td>'.$li_pla[etat].'</td>
+  <td>'.$li_pla[date].'</td></tr>
+  <td><a href="?controler=Lplanings&action=modifier&id='.$li_pla["li_id"].'">Modifier</a></td>
+  <td><a href="?controler=Lplanings&action=supprimer&id='.$li_pla["li_id"].'">Supprimer</a></td>
+	</tr>';		
+endforeach; ?>
+</table>
+<a href="?controler=Lplanings&action=ajouter">Ajouter un nouveau li_pla</a>

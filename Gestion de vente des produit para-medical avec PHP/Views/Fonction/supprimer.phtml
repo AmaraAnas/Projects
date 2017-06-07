@@ -1,0 +1,23 @@
+<h1>Supprimer un Fonction</h1>
+<form id="form1" method="post"><table>	<tr>
+		<td>ID : </td>
+		<td><input readonly type="text" id="fonc_id" name="fonc_id" 
+			value="<?php echo $this->viewData['fonction']->getfonc_id();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['fonction']->ValidationMessage("fonc_id");
+			?></span>
+		</td>
+	</tr>
+	<tr>
+		<td>Libele : </td>
+		<td><input readonly type="text" id="fonc_name" name="fonc_name" 
+			value="<?php echo $this->viewData['fonction']->getfonc_name();?>"/>
+			<span id="erreur"><?php 
+			echo $this->viewData['fonction']->ValidationMessage("fonc_name");
+			?></span>
+		</td>
+	</tr>
+				<tr><td colspan="2"><input type="submit" value="Supprimer" /></td></tr>
+			</table>
+		</form>
+	<a href="?controler=Fonction">Retour</a>
